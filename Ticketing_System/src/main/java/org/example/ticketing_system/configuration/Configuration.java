@@ -1,4 +1,4 @@
-package org.example.ticketing_system.config;
+package org.example.ticketing_system.configuration;
 
 import com.google.gson.Gson;
 
@@ -12,6 +12,14 @@ public class Configuration {
     private int ticketReleaseRate;
     private int customerRate;
     private int maxNUmOfTickets;
+
+    public Configuration(int totalTickets, int ticketReleaseRate, int customerRate, int maxNUmOfTickets) {
+        this.totalTickets = totalTickets;
+        this.ticketReleaseRate = ticketReleaseRate;
+        this.customerRate = customerRate;
+        this.maxNUmOfTickets = maxNUmOfTickets;
+    }
+    public Configuration(){}
 
     public int getTotalTickets() {
         return totalTickets;
@@ -45,6 +53,14 @@ public class Configuration {
         this.maxNUmOfTickets = maxNUmOfTickets;
     }
 
+    public void displayInfo() {
+        System.out.println(totalTickets);
+        System.out.println(ticketReleaseRate);
+        System.out.println(customerRate);
+        System.out.println(maxNUmOfTickets);
+    }
+
+
     public void saveConfiguration(String filename) throws IOException {
         Gson gson = new Gson();
         try (FileWriter writer = new FileWriter(filename)) {
@@ -58,7 +74,5 @@ public class Configuration {
         return gson.fromJson(json, Configuration.class);
     }
 
-    public boolean isValid() {
-        return totalTickets > 0 && ticketReleaseRate > 0 && customerRate > 0 && maxNUmOfTickets > 0;
-    }
+
 }
