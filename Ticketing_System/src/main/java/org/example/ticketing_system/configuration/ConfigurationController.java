@@ -12,13 +12,31 @@ public class ConfigurationController {
 
 //        get inputs
         while (true) {
+            System.out.print("Enter Max Number of Tickets: ");
+            int max = scanner.nextInt();
+            if (max < 0) {
+                System.out.println("Max Number of Tickets must be a positive number. Enter again.");
+                continue;
+            }
+            config.setMaxNUmOfTickets(max);
+            break;
+
+        }
+
+        while (true) {
             System.out.print("Enter Total Tickets: ");
             int total = scanner.nextInt();
             if (total < 0) {
                 System.out.println("Total Tickets must be a positive number. Enter again.");
                 continue;
             }
-            config.setTotalTickets(total);
+            else if(total>config.getMaxNUmOfTickets()){
+                System.out.println("Total Tickets must be lower than max. Enter again.");
+                continue;
+            }
+            else{
+                config.setTotalTickets(total);
+            }
             break;
         }
 
@@ -40,20 +58,11 @@ public class ConfigurationController {
                 System.out.println("Customer retrieval rate must be a positive number. Enter again.");
                 continue;
             }
-            config.setCustomerRate(retrieval);
+            config.setCustomerRetrievalRate(retrieval);
             break;
         }
 
-        while (true) {
-            System.out.print("Enter Max Number of Tickets: ");
-            int max = scanner.nextInt();
-            if (max < 0) {
-                System.out.println("Max Number of Tickets must be a positive number. Enter again.");
-                continue;
-            }
-            config.setMaxNUmOfTickets(max);
-            break;
-        }
+
 
 //        test
 //        config.displayInfo();

@@ -1,21 +1,28 @@
 package org.example.ticketing_system;
 
 import jakarta.persistence.criteria.CriteriaBuilder;
+import org.example.ticketing_system.configuration.Configuration;
+
+import java.io.IOException;
 
 public class Test {
-    public static void main(String[] args) throws InterruptedException {
-        TicketPool ticketPool = new TicketPool();
+    public static void main(String[] args) throws InterruptedException, IOException {
 
-        Vendor vendor1 = new Vendor(1,5,100,ticketPool);
+        Configuration config = Configuration.loadConfiguration("src/main/resources/config.json");
+
+//        Ticket Pool
+        TicketPool ticketPool = new TicketPool(config.getMaxNUmOfTickets(),config.getTotalTickets());
+
+        Vendor vendor1 = new Vendor(1,5,config.getTicketReleaseRate(),ticketPool);
         Thread thread1 = new Thread(vendor1);
 
-        Vendor vendor2 = new Vendor(2,3,100,ticketPool);
+        Vendor vendor2 = new Vendor(2,6,config.getTicketReleaseRate(),ticketPool);
         Thread thread2 = new Thread(vendor2);
 
-        Customer customer1 = new Customer(1,50,ticketPool);
+        Customer customer1 = new Customer(1,config.getCustomerRetrievalRate(),ticketPool);
         Thread thread3 = new Thread(customer1);
 
-        Customer customer2 = new Customer(2,80,ticketPool);
+        Customer customer2 = new Customer(2, config.getCustomerRetrievalRate(), ticketPool);
         Thread thread4 = new Thread(customer2);
 
         System.out.println("Available tickets : "+ticketPool.getAllTickets());
@@ -25,9 +32,8 @@ public class Test {
         thread3.start();
         thread4.start();
 
-//        added delay to check ticket availability
-        Thread.sleep(500);
+        ticketPool.displayTicketStatus();
 
-        System.out.println("Available tickets : "+ticketPool.getAllTickets());
+
     }
 }

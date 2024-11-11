@@ -8,16 +8,16 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 
 public class Configuration {
-    private int totalTickets;
-    private int ticketReleaseRate;
-    private int customerRate;
-    private int maxNUmOfTickets;
+    private int totalTickets;   //number of tickets release at a time
+    private int ticketReleaseRate;      // how often vendors release tickets
+    private int customerRetrievalRate;    //how often customers buy tickets
+    private int maxNUmOfTickets;    //maximum ticket capacity of the ticket pool
 
-    public Configuration(int totalTickets, int ticketReleaseRate, int customerRate, int maxNUmOfTickets) {
-        this.totalTickets = totalTickets;
-        this.ticketReleaseRate = ticketReleaseRate;
-        this.customerRate = customerRate;
-        this.maxNUmOfTickets = maxNUmOfTickets;
+    public Configuration(int totalTickets, int ticketReleaseRate, int customerRetrievalRate, int maxNUmOfTickets) {
+        this.totalTickets = totalTickets;  //total number of tickets vendors can Issue for the event
+        this.ticketReleaseRate = ticketReleaseRate;    //how frequently each vendor releases a batch of tickets into the system
+        this.customerRetrievalRate = customerRetrievalRate;    //how frequently each customer attempts to retrieve (purchase) a ticket
+        this.maxNUmOfTickets = maxNUmOfTickets;      //maximum number of tickets system can hold
     }
     public Configuration(){}
 
@@ -29,8 +29,8 @@ public class Configuration {
         return ticketReleaseRate;
     }
 
-    public int getCustomerRate() {
-        return customerRate;
+    public int getCustomerRetrievalRate() {
+        return customerRetrievalRate;
     }
 
     public int getMaxNUmOfTickets() {
@@ -45,8 +45,8 @@ public class Configuration {
         this.ticketReleaseRate = ticketReleaseRate;
     }
 
-    public void setCustomerRate(int customerRate) {
-        this.customerRate = customerRate;
+    public void setCustomerRetrievalRate(int customerRetrievalRate) {
+        this.customerRetrievalRate = customerRetrievalRate;
     }
 
     public void setMaxNUmOfTickets(int maxNUmOfTickets) {
@@ -56,7 +56,7 @@ public class Configuration {
     public void displayInfo() {
         System.out.println(totalTickets);
         System.out.println(ticketReleaseRate);
-        System.out.println(customerRate);
+        System.out.println(customerRetrievalRate);
         System.out.println(maxNUmOfTickets);
     }
 

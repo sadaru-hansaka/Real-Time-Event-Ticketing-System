@@ -16,14 +16,18 @@ public class Vendor implements Runnable{
 //    run method
     @Override
     public void run() {
-        try{
-            while (!ticketPool.isMaxReached()){
-                ticketPool.addTickets(ticketsPerRelease);
-                System.out.println("Vendor "+vendorId+" released "+ticketsPerRelease+" tickets per release");
+        try {
+            while (!ticketPool.isMaxReached()) {
+                synchronized (ticketPool) {
+                    ticketPool.addTickets(ticketsPerRelease);
+                }
+                System.out.println("Vendor " + vendorId + " released " + ticketsPerRelease + " tickets.");
                 Thread.sleep(releaseInterval);
             }
-        }catch (InterruptedException e){
-            System.out.println("Vendor "+vendorId+" interrupted.");
+            System.out.println("Vendor " + vendorId + " has stopped issuing tickets.");
+        } catch (InterruptedException e) {
+            System.out.println("Vendor " + vendorId + " interrupted.");
+            Thread.currentThread().interrupt();
         }
     }
 }
