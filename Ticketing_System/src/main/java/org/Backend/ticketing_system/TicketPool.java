@@ -13,7 +13,7 @@ public class TicketPool {
     private int ticketID = 1;
     private final int maxTicket;//    this should change to maxNumOfTickets
     private int totalTicket;
-    private int releasedTickets = 0;
+    private int availableTicket = 0;
 
     public TicketPool(int maxTicket, int totalTicket) {
         this.maxTicket = maxTicket;
@@ -21,15 +21,20 @@ public class TicketPool {
     }
 
 
-    public synchronized void addTickets(int count,int numOfTickets){
+    public synchronized void addTickets(int count) throws InterruptedException {
+
             for (int i = 1; i <= count; i++){
+                while (availableTicket >= maxTicket){
+                    System.out.println("\nWaiting for customers to buy available ticket************************************************************\n");
+                    wait();
+                }
                 tickets.add(ticketID);
                 System.out.println("Ticket added : " + ticketID);
                 ticketID++;
-                releasedTickets++;
+                availableTicket++;
             }
             notifyAll();
-            System.out.println("\n");
+            System.out.println("\n*******************************The number of available tickets is " + availableTicket +"\n");
     }
 
     //    remove ticket function
@@ -37,11 +42,14 @@ public class TicketPool {
         Integer ticket = tickets.poll();
         if (ticket != null) {
             System.out.println("Ticket purchased: " + ticket);
+            availableTicket--;
+            System.out.println("\n*******************************The number of available tickets is " + availableTicket +"\n");
+            notifyAll();
         } else {
             System.out.println("No tickets available for purchase.");
         }
-        System.out.println("\n");
         return ticket;
+
     }
 
     //    Method to check if tickets are available
@@ -49,18 +57,5 @@ public class TicketPool {
         return !tickets.isEmpty();
     }
 
-    public boolean isMaxReached() {
-        return ticketID >= totalTicket;
-    }
-
-    public List<Integer> getAllTickets() {
-        return tickets.stream().collect(Collectors.toList());
-    }
-
-    // Method to display the current status of tickets for debugging or information
-    public void displayTicketStatus() {
-        System.out.println("Tickets in pool: " + getAllTickets());
-        System.out.println("Total tickets issued so far: " + ticketID);
-    }
 
 }

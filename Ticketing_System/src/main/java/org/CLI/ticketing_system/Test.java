@@ -13,10 +13,10 @@ public class Test {
 //        Ticket Pool
         TicketPool ticketPool = new TicketPool(config.getMaxNUmOfTickets(),config.getTotalTickets());
 
-        Vendor vendor1 = new Vendor(1,6,config.getTicketReleaseRate(),23,ticketPool);
+        Vendor vendor1 = new Vendor(1,6,config.getTicketReleaseRate(),8,ticketPool);
         Thread thread1 = new Thread(vendor1);
 
-        Vendor vendor2 = new Vendor(2,5,config.getTicketReleaseRate(),21,ticketPool);
+        Vendor vendor2 = new Vendor(2,5,config.getTicketReleaseRate(),7,ticketPool);
         Thread thread2 = new Thread(vendor2);
 
         Customer customer1 = new Customer(1,config.getCustomerRetrievalRate(),ticketPool);
@@ -32,7 +32,6 @@ public class Test {
         thread3.start();
         thread4.start();
 
-//        ticketPool.displayTicketStatus();
 
     }
 }

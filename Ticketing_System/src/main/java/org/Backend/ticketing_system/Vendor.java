@@ -14,20 +14,21 @@ public class Vendor implements Runnable{
         this.numOfTickets = numOfTickets;
         this.ticketPool= ticketPool;
     }
-
+    
 //    run method
     @Override
     public void run() {
         try {
-            while (numOfTickets>0) {
+            while (numOfTickets > 0) {
                 synchronized (ticketPool) {
-
+                    // Determine how many tickets can be released
                     int ticketsToRelease = Math.min(ticketsPerRelease, numOfTickets);
-                    synchronized (ticketPool) {
-                        ticketPool.addTickets(ticketsToRelease, numOfTickets);
-                        numOfTickets -= ticketsToRelease;
-                    }
-                    System.out.println("Vendor "+vendorId+" has released "+ticketsToRelease+" tickets");
+
+                    // Add tickets to the pool and capture how many were actually added
+                    ticketPool.addTickets(ticketsToRelease);
+                    int actualReleased = Math.min(ticketsToRelease, numOfTickets);
+                    numOfTickets -= actualReleased;
+                    System.out.println("Vendor " + vendorId + " has released " + ticketsToRelease + " tickets\n");
                 }
                 Thread.sleep(releaseInterval);
             }
@@ -37,4 +38,6 @@ public class Vendor implements Runnable{
             Thread.currentThread().interrupt();
         }
     }
+
+
 }
