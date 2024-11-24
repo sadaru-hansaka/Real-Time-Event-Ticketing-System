@@ -1,4 +1,4 @@
-package org.example.ticketing_system.configuration;
+package org.CLI.ticketing_system;
 
 import com.google.gson.Gson;
 
@@ -13,8 +13,8 @@ public class Configuration {
     private int customerRetrievalRate;    //how often customers buy tickets
     private int maxNUmOfTickets;    //maximum ticket capacity of the ticket pool
 
-    public Configuration(int totalTickets, int ticketReleaseRate, int customerRetrievalRate, int maxNUmOfTickets) {
-        this.totalTickets = totalTickets;  //total number of tickets vendors can Issue for the event
+    public Configuration(int ticketReleaseRate, int customerRetrievalRate, int maxNUmOfTickets) {
+        this.totalTickets = 0;  //total number of tickets vendors can Issue for the event
         this.ticketReleaseRate = ticketReleaseRate;    //how frequently each vendor releases a batch of tickets into the system
         this.customerRetrievalRate = customerRetrievalRate;    //how frequently each customer attempts to retrieve (purchase) a ticket
         this.maxNUmOfTickets = maxNUmOfTickets;      //maximum number of tickets system can hold
@@ -53,14 +53,8 @@ public class Configuration {
         this.maxNUmOfTickets = maxNUmOfTickets;
     }
 
-    public void displayInfo() {
-        System.out.println(totalTickets);
-        System.out.println(ticketReleaseRate);
-        System.out.println(customerRetrievalRate);
-        System.out.println(maxNUmOfTickets);
-    }
 
-
+//    save parameters to the json file
     public void saveConfiguration(String filename) throws IOException {
         Gson gson = new Gson();
         try (FileWriter writer = new FileWriter(filename)) {
@@ -68,6 +62,7 @@ public class Configuration {
         }
     }
 
+//    get data from json file
     public static Configuration loadConfiguration(String filename) throws IOException {
         Gson gson = new Gson();
         String json = new String(Files.readAllBytes(Paths.get(filename)));

@@ -1,15 +1,17 @@
-package org.example.ticketing_system;
+package org.Backend.ticketing_system;
 
 public class Vendor implements Runnable{
     private int vendorId;
     private int ticketsPerRelease;
     private int releaseInterval;
-    private TicketPool ticketPool;
+    private int numOfTickets;
+    private final TicketPool ticketPool;
 
-    public Vendor(int vendorId, int ticketsPerRelease, int releaseInterval, TicketPool ticketPool) {
+    public Vendor(int vendorId, int ticketsPerRelease, int releaseInterval,int numOfTickets,TicketPool ticketPool) {
         this.vendorId = vendorId;
         this.ticketsPerRelease = ticketsPerRelease;
         this.releaseInterval = releaseInterval;
+        this.numOfTickets = numOfTickets;
         this.ticketPool= ticketPool;
     }
 
@@ -17,11 +19,16 @@ public class Vendor implements Runnable{
     @Override
     public void run() {
         try {
-            while (!ticketPool.isMaxReached()) {
+            while (numOfTickets>0) {
                 synchronized (ticketPool) {
-                    ticketPool.addTickets(ticketsPerRelease);
+
+                    int ticketsToRelease = Math.min(ticketsPerRelease, numOfTickets);
+                    synchronized (ticketPool) {
+                        ticketPool.addTickets(ticketsToRelease, numOfTickets);
+                        numOfTickets -= ticketsToRelease;
+                    }
+                    System.out.println("Vendor "+vendorId+" has released "+ticketsToRelease+" tickets");
                 }
-                System.out.println("Vendor " + vendorId + " released " + ticketsPerRelease + " tickets.");
                 Thread.sleep(releaseInterval);
             }
             System.out.println("Vendor " + vendorId + " has stopped issuing tickets.");

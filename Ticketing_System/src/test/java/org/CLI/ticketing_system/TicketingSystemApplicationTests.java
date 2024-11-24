@@ -1,4 +1,4 @@
-package org.example.ticketing_system;
+package org.CLI.ticketing_system;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

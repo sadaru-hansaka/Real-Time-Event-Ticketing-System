@@ -1,4 +1,4 @@
-package org.example.ticketing_system.configuration;
+package org.CLI.ticketing_system;
 
 import java.io.IOException;
 import java.util.Scanner;
@@ -24,23 +24,6 @@ public class ConfigurationController {
         }
 
         while (true) {
-            System.out.print("Enter Total Tickets: ");
-            int total = scanner.nextInt();
-            if (total < 0) {
-                System.out.println("Total Tickets must be a positive number. Enter again.");
-                continue;
-            }
-            else if(total>config.getMaxNUmOfTickets()){
-                System.out.println("Total Tickets must be lower than max. Enter again.");
-                continue;
-            }
-            else{
-                config.setTotalTickets(total);
-            }
-            break;
-        }
-
-        while (true) {
             System.out.print("Enter Ticket Release Rate: ");
             int release = scanner.nextInt();
             if (release < 0) {
@@ -62,10 +45,20 @@ public class ConfigurationController {
             break;
         }
 
+//        while (true) {
+//            System.out.print("Enter total number of Tickets: ");
+//            int total = scanner.nextInt();
+//            if (total < 0 ) {
+//                System.out.println("Total number of Tickets must be a positive number. Enter again.");
+//                continue;
+//            } else if (total > config.getMaxNUmOfTickets()) {
+//                System.out.println("Max Number of Tickets can't exceed maximum number of tickets. Enter again.");
+//                continue;
+//            }
+//            config.setTotalTickets(total);
+//            break;
+//        }
 
-
-//        test
-//        config.displayInfo();
 
 
 //        save configurations to the json file

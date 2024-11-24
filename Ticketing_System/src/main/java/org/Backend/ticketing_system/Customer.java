@@ -1,4 +1,4 @@
-package org.example.ticketing_system;
+package org.Backend.ticketing_system;
 
 import static java.lang.Thread.sleep;
 
