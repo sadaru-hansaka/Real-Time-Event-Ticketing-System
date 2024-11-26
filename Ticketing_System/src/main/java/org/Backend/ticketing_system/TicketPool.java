@@ -1,9 +1,6 @@
 package org.Backend.ticketing_system;
 
-import java.sql.SQLOutput;
-import java.util.List;
 import java.util.concurrent.ConcurrentLinkedDeque;
-import java.util.stream.Collectors;
 
 public class TicketPool {
 
@@ -21,27 +18,38 @@ public class TicketPool {
     }
 
 
-    public synchronized void addTickets(int count) throws InterruptedException {
-
+    public synchronized boolean addTickets(int count,int vendor) throws InterruptedException {
+            if(ticketID>totalTicket){
+                System.out.println("\nMaximum capacity reached! No more tickets can be added.");
+                return false;
+            }
             for (int i = 1; i <= count; i++){
                 while (availableTicket >= maxTicket){
                     System.out.println("\nWaiting for customers to buy available ticket************************************************************\n");
                     wait();
                 }
+
+                if(ticketID>totalTicket){
+                    System.out.println("Reached the maximum number of tickets");
+                    return false;
+                }
                 tickets.add(ticketID);
-                System.out.println("Ticket added : " + ticketID);
+                System.out.println("Vendor "+vendor+" added ticket : " + ticketID);
                 ticketID++;
                 availableTicket++;
+
+
             }
             notifyAll();
             System.out.println("\n*******************************The number of available tickets is " + availableTicket +"\n");
+           return true;
     }
 
     //    remove ticket function
-    public synchronized Integer removeTickets(){
+    public synchronized Integer removeTickets(int customerID){
         Integer ticket = tickets.poll();
         if (ticket != null) {
-            System.out.println("Ticket purchased: " + ticket);
+            System.out.println("Customer "+customerID+" purchased ticket : " + ticket);
             availableTicket--;
             System.out.println("\n*******************************The number of available tickets is " + availableTicket +"\n");
             notifyAll();
@@ -55,6 +63,10 @@ public class TicketPool {
     //    Method to check if tickets are available
     public synchronized boolean hasTickets() {
         return !tickets.isEmpty();
+    }
+
+    public synchronized boolean isCapacityFull() {
+        return ticketID > totalTicket;
     }
 
 

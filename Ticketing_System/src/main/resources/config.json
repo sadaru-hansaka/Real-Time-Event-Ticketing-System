@@ -1,1 +1,1 @@
-{"totalTickets":0,"ticketReleaseRate":100,"customerRetrievalRate":50,"maxNUmOfTickets":10}
+{"totalTickets":100,"ticketReleaseRate":1000,"customerRetrievalRate":500,"maxTicketCapacity":50}

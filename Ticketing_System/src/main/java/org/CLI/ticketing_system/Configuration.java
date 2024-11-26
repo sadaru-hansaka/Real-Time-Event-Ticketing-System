@@ -8,16 +8,16 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 
 public class Configuration {
-    private int totalTickets;   //number of tickets release at a time
+    private int totalTickets;   //number of tickets release for the event
     private int ticketReleaseRate;      // how often vendors release tickets
     private int customerRetrievalRate;    //how often customers buy tickets
-    private int maxNUmOfTickets;    //maximum ticket capacity of the ticket pool
+    private int maxTicketCapacity;    //maximum ticket capacity of the ticket pool
 
-    public Configuration(int ticketReleaseRate, int customerRetrievalRate, int maxNUmOfTickets) {
+    public Configuration(int ticketReleaseRate, int customerRetrievalRate, int maxTicketCapacity) {
         this.totalTickets = 0;  //total number of tickets vendors can Issue for the event
         this.ticketReleaseRate = ticketReleaseRate;    //how frequently each vendor releases a batch of tickets into the system
         this.customerRetrievalRate = customerRetrievalRate;    //how frequently each customer attempts to retrieve (purchase) a ticket
-        this.maxNUmOfTickets = maxNUmOfTickets;      //maximum number of tickets system can hold
+        this.maxTicketCapacity = maxTicketCapacity;      //maximum number of tickets system can hold
     }
     public Configuration(){}
 
@@ -33,8 +33,8 @@ public class Configuration {
         return customerRetrievalRate;
     }
 
-    public int getMaxNUmOfTickets() {
-        return maxNUmOfTickets;
+    public int getmaxTicketCapacity() {
+        return maxTicketCapacity;
     }
 
     public void setTotalTickets(int totalTickets) {
@@ -49,8 +49,8 @@ public class Configuration {
         this.customerRetrievalRate = customerRetrievalRate;
     }
 
-    public void setMaxNUmOfTickets(int maxNUmOfTickets) {
-        this.maxNUmOfTickets = maxNUmOfTickets;
+    public void setmaxTicketCapacity(int maxTicketCapacity) {
+        this.maxTicketCapacity = maxTicketCapacity;
     }
 
 

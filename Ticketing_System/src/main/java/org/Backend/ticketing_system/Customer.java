@@ -18,10 +18,8 @@ public class Customer implements Runnable{
     public void run() {
         try {
             while (ticketPool.hasTickets()) {
-                Integer ticket = ticketPool.removeTickets();
-                if (ticket != null) {
-                    System.out.println("Customer " + customerId + " purchased ticket " + ticket);
-                } else {
+                Integer ticket = ticketPool.removeTickets(customerId);
+                if (ticket == null) {
                     System.out.println("Customer " + customerId + " found no tickets available.");
                 }
 

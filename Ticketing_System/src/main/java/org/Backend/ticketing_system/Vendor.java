@@ -21,14 +21,21 @@ public class Vendor implements Runnable{
         try {
             while (numOfTickets > 0) {
                 synchronized (ticketPool) {
+
                     // Determine how many tickets can be released
                     int ticketsToRelease = Math.min(ticketsPerRelease, numOfTickets);
-
-                    // Add tickets to the pool and capture how many were actually added
-                    ticketPool.addTickets(ticketsToRelease);
+                    boolean added = ticketPool.addTickets(ticketsToRelease,vendorId);
+                    if (!added) {
+                        System.out.println("Vendor " + vendorId + " stopped as no tickets can be added.");
+                        break; // Stop if tickets can't be added
+                    }
+                    // calculate how many were actually added
                     int actualReleased = Math.min(ticketsToRelease, numOfTickets);
                     numOfTickets -= actualReleased;
-                    System.out.println("Vendor " + vendorId + " has released " + ticketsToRelease + " tickets\n");
+
+                    if(ticketPool.isCapacityFull()){
+                        break;
+                    }
                 }
                 Thread.sleep(releaseInterval);
             }

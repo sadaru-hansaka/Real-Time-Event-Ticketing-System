@@ -18,9 +18,20 @@ public class ConfigurationController {
                 System.out.println("Max Number of Tickets must be a positive number. Enter again.");
                 continue;
             }
-            config.setMaxNUmOfTickets(max);
+            config.setmaxTicketCapacity(max);
             break;
 
+        }
+
+        while (true) {
+            System.out.print("Enter total number of Tickets: ");
+            int total = scanner.nextInt();
+            if (total < 0 ) {
+                System.out.println("Total number of Tickets must be a positive number. Enter again.");
+                continue;
+            }
+            config.setTotalTickets(total);
+            break;
         }
 
         while (true) {
@@ -45,19 +56,7 @@ public class ConfigurationController {
             break;
         }
 
-//        while (true) {
-//            System.out.print("Enter total number of Tickets: ");
-//            int total = scanner.nextInt();
-//            if (total < 0 ) {
-//                System.out.println("Total number of Tickets must be a positive number. Enter again.");
-//                continue;
-//            } else if (total > config.getMaxNUmOfTickets()) {
-//                System.out.println("Max Number of Tickets can't exceed maximum number of tickets. Enter again.");
-//                continue;
-//            }
-//            config.setTotalTickets(total);
-//            break;
-//        }
+
 
 
 
