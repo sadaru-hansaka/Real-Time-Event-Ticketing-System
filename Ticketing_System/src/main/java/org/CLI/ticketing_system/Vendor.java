@@ -1,4 +1,4 @@
-package org.Backend.ticketing_system;
+package org.CLI.ticketing_system;
 
 public class Vendor implements Runnable{
     private int vendorId;
@@ -15,13 +15,12 @@ public class Vendor implements Runnable{
         this.ticketPool= ticketPool;
     }
     
-//    run method
+//  run method
     @Override
     public void run() {
         try {
             while (numOfTickets > 0) {
                 synchronized (ticketPool) {
-
                     // Determine how many tickets can be released
                     int ticketsToRelease = Math.min(ticketsPerRelease, numOfTickets);
                     boolean added = ticketPool.addTickets(ticketsToRelease,vendorId);
@@ -45,6 +44,4 @@ public class Vendor implements Runnable{
             Thread.currentThread().interrupt();
         }
     }
-
-
 }

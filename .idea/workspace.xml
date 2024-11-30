@@ -4,7 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f59a9d39-f11a-42f4-9efc-3a16fe9d97ef" name="Changes" comment="" />
+    <list default="true" id="f59a9d39-f11a-42f4-9efc-3a16fe9d97ef" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/Ticketing_System/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Ticketing_System/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ticketing_System/src/main/java/org/Backend/ticketing_system/Customer.java" beforeDir="false" afterPath="$PROJECT_DIR$/Ticketing_System/src/main/java/org/CLI/ticketing_system/Customer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ticketing_System/src/main/java/org/Backend/ticketing_system/TicketPool.java" beforeDir="false" afterPath="$PROJECT_DIR$/Ticketing_System/src/main/java/org/CLI/ticketing_system/TicketPool.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ticketing_System/src/main/java/org/Backend/ticketing_system/TicketingSystemApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/Ticketing_System/src/main/java/org/Backend/ticketing_system/TicketingSystemApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ticketing_System/src/main/java/org/Backend/ticketing_system/Vendor.java" beforeDir="false" afterPath="$PROJECT_DIR$/Ticketing_System/src/main/java/org/CLI/ticketing_system/Vendor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ticketing_System/src/main/java/org/CLI/ticketing_system/ConfigurationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Ticketing_System/src/main/java/org/CLI/ticketing_system/ConfigurationController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ticketing_System/src/main/java/org/CLI/ticketing_system/Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/Ticketing_System/src/main/java/org/CLI/ticketing_system/Test.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ticketing_System/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/Ticketing_System/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ticketing_System/src/main/resources/config.json" beforeDir="false" afterPath="$PROJECT_DIR$/Ticketing_System/src/main/resources/config.json" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -13,9 +23,9 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 7
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 7
+}</component>
   <component name="ProjectId" id="2pFu51mblGwoZ5ZS8vLtJNXwcYH" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -33,11 +43,12 @@
     "Spring Boot.TicketingSystemApplication.executor": "Run",
     "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "E:/L5/Semester 1/OOP/OOP-CW",
     "nodejs_package_manager_path": "npm",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
-  <component name="RunManager" selected="Application.Test">
+  <component name="RunManager">
     <configuration name="ConfigurationController" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="org.example.ticketing_system.configuration.ConfigurationController" />
       <module name="Ticketing_System" />
@@ -96,6 +107,7 @@
       <option name="presentableId" value="Default" />
       <updated>1732373959704</updated>
       <workItem from="1732373960912" duration="265000" />
+      <workItem from="1732947305237" duration="28000" />
     </task>
     <servers />
   </component>

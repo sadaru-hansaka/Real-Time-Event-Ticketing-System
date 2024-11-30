@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.util.Scanner;
 
 public class ConfigurationController {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         Scanner scanner=new Scanner(System.in);
 
 //        create the Configuration object
@@ -66,6 +66,17 @@ public class ConfigurationController {
             System.out.println("Configuration Saved!");
         }catch (IOException e){
             System.out.println("Configuration Saving Failed!");
+        }
+
+
+        System.out.print("\nDo you want to Start? (Y/N) : ");
+        String choice = scanner.next();
+        Test test1 = new Test();
+        if (choice.equalsIgnoreCase("Y")) {
+            System.out.println("Starting Ticketing System");
+            test1.testing();
+        } else if (choice.equalsIgnoreCase("N")) {
+            System.out.println("Exiting Ticketing System");
         }
 
 

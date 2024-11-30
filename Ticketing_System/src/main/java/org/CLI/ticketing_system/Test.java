@@ -1,13 +1,10 @@
 package org.CLI.ticketing_system;
 
-import org.Backend.ticketing_system.Customer;
-import org.Backend.ticketing_system.TicketPool;
-import org.Backend.ticketing_system.Vendor;
-
 import java.io.IOException;
 
 public class Test {
-    public static void main(String[] args) throws InterruptedException, IOException {
+//    public static void main(String[] args) throws InterruptedException, IOException {
+    public void testing() throws IOException {
         Configuration config = Configuration.loadConfiguration("src/main/resources/config.json");
 
 //        Ticket Pool
@@ -30,13 +27,13 @@ public class Test {
 
 //        System.out.println("Available tickets : "+ticketPool.getAllTickets());
 
+
+
         thread1.start();
         thread2.start();
         thread5.start();
         thread3.start();
         thread4.start();
-
-
 
     }
 }
