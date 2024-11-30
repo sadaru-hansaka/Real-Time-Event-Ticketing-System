@@ -11,7 +11,7 @@ public class Logging {
 
     private Logging(String filename){
         try {
-            this.bufferedWriter = new BufferedWriter(new FileWriter(filename, true));
+            this.bufferedWriter = new BufferedWriter(new FileWriter(filename));
         }catch (IOException e){
             System.out.println("Error creating logging file");
         }
@@ -26,9 +26,8 @@ public class Logging {
 
     public synchronized void log(String txt) {
         try{
-            bufferedWriter.newLine();
             bufferedWriter.write(txt);
-
+            bufferedWriter.newLine();
             bufferedWriter.flush();
 
         }catch (IOException e){

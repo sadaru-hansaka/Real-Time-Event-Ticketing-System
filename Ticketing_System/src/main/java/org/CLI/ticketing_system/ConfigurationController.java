@@ -69,15 +69,15 @@ public class ConfigurationController {
         }
 
 
-        System.out.print("\nDo you want to Start? (Y/N) : ");
-        String choice = scanner.next();
-        Test test1 = new Test();
-        if (choice.equalsIgnoreCase("Y")) {
-            System.out.println("Starting Ticketing System");
-            test1.testing();
-        } else if (choice.equalsIgnoreCase("N")) {
-            System.out.println("Exiting Ticketing System");
-        }
+//        System.out.print("\nDo you want to Start? (Y/N) : ");
+//        String choice = scanner.next();
+//        Test test1 = new Test();
+//        if (choice.equalsIgnoreCase("Y")) {
+//            System.out.println("Starting Ticketing System");
+//            test1.testing();
+//        } else if (choice.equalsIgnoreCase("N")) {
+//            System.out.println("Exiting Ticketing System");
+//        }
 
 
     }

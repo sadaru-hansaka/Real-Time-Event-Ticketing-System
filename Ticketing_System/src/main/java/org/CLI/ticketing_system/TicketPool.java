@@ -24,7 +24,7 @@ public class TicketPool {
         this.totalTicket = totalTicket;
 
         try{
-            this.logging = Logging.getInstance("Logging.txt");
+            this.logging = Logging.getInstance("src/main/resources/Logging.txt");
         }catch(IOException e){
             System.out.println("Error");
         }
@@ -32,17 +32,19 @@ public class TicketPool {
 
 
 
-
+//    adding tickets to the ticket pool
     public synchronized boolean addTickets(int count,int vendor) throws InterruptedException {
-
-
         if (ticketID > totalTicket) {
-            System.out.println("\nMaximum capacity reached! No more tickets can be added.");
+            String maxMsg = "\nMaximum capacity reached! No more tickets can be added.";
+            System.out.println(maxMsg);
+            logging.log(maxMsg);
             return false;
         }
         for (int i = 1; i <= count; i++) {
             while (availableTicket >= maxTicket) {
-                System.out.println("\nWaiting for customers to buy available ticket\n");
+                String waitingmsg = "\nWaiting for customers to buy available ticket\n";
+                System.out.println(waitingmsg);
+                logging.log(waitingmsg);
                 wait();
             }
 
@@ -58,7 +60,7 @@ public class TicketPool {
             availableTicket++;
         }
         notifyAll();
-        System.out.println("\n*******************************The number of available tickets : " + availableTicket + "\n");
+        System.out.println("\nThe number of available tickets : " + availableTicket + "\n");
         return true;
     }
 
@@ -67,9 +69,11 @@ public class TicketPool {
     public synchronized Integer removeTickets(int customerID){
         Integer ticket = tickets.poll();
         if (ticket != null) {
-            System.out.println("Customer "+customerID+" purchased ticket : " + ticket);
+            String customerOut="Customer "+customerID+" purchased ticket : " + ticket;
+            System.out.println(customerOut);
+            logging.log(customerOut);
             availableTicket--;
-            System.out.println("\n*******************************The number of available tickets : " + availableTicket +"\n");
+            System.out.println("\nThe number of available tickets : " + availableTicket +"\n");
             notifyAll();
         } else {
             System.out.println("No tickets available for purchase.");
