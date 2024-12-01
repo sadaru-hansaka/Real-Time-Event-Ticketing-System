@@ -1,0 +1,234 @@
+Vendor 1 added ticket : 1
+Vendor 1 added ticket : 2
+Vendor 1 added ticket : 3
+Vendor 1 added ticket : 4
+Vendor 1 added ticket : 5
+Vendor 1 added ticket : 6
+Vendor 1 added ticket : 7
+Vendor 1 added ticket : 8
+Vendor 1 added ticket : 9
+Vendor 1 added ticket : 10
+Customer 2 purchased ticket : 1
+Customer 1 purchased ticket : 2
+Vendor 2 added ticket : 11
+Vendor 2 added ticket : 12
+Vendor 2 added ticket : 13
+Vendor 2 added ticket : 14
+Vendor 2 added ticket : 15
+Vendor 2 added ticket : 16
+Vendor 2 added ticket : 17
+Vendor 2 added ticket : 18
+Vendor 2 added ticket : 19
+Vendor 2 added ticket : 20
+Vendor 1 added ticket : 21
+Vendor 1 added ticket : 22
+
+Waiting for customers to buy available ticket
+
+
+Waiting for customers to buy available ticket
+
+Customer 2 purchased ticket : 3
+Vendor 1 added ticket : 23
+
+Waiting for customers to buy available ticket
+
+
+Waiting for customers to buy available ticket
+
+Customer 1 purchased ticket : 4
+Vendor 1 added ticket : 24
+
+Waiting for customers to buy available ticket
+
+
+Waiting for customers to buy available ticket
+
+Customer 2 purchased ticket : 5
+Vendor 1 added ticket : 25
+
+Waiting for customers to buy available ticket
+
+
+Waiting for customers to buy available ticket
+
+Customer 1 purchased ticket : 6
+Vendor 1 added ticket : 26
+
+Waiting for customers to buy available ticket
+
+
+Waiting for customers to buy available ticket
+
+Customer 2 purchased ticket : 7
+Vendor 1 added ticket : 27
+
+Waiting for customers to buy available ticket
+
+
+Waiting for customers to buy available ticket
+
+Customer 1 purchased ticket : 8
+Vendor 1 added ticket : 28
+
+Waiting for customers to buy available ticket
+
+
+Waiting for customers to buy available ticket
+
+Customer 2 purchased ticket : 9
+Vendor 1 added ticket : 29
+
+Waiting for customers to buy available ticket
+
+
+Waiting for customers to buy available ticket
+
+Customer 1 purchased ticket : 10
+Vendor 1 added ticket : 30
+
+Waiting for customers to buy available ticket
+
+
+Waiting for customers to buy available ticket
+
+Customer 2 purchased ticket : 11
+Vendor 2 added ticket : 31
+
+Waiting for customers to buy available ticket
+
+
+Waiting for customers to buy available ticket
+
+Customer 1 purchased ticket : 12
+Vendor 2 added ticket : 32
+
+Waiting for customers to buy available ticket
+
+
+Waiting for customers to buy available ticket
+
+Customer 2 purchased ticket : 13
+Vendor 2 added ticket : 33
+
+Waiting for customers to buy available ticket
+
+
+Waiting for customers to buy available ticket
+
+Customer 1 purchased ticket : 14
+Vendor 2 added ticket : 34
+
+Waiting for customers to buy available ticket
+
+
+Waiting for customers to buy available ticket
+
+Customer 2 purchased ticket : 15
+Vendor 2 added ticket : 35
+
+Waiting for customers to buy available ticket
+
+Customer 1 purchased ticket : 16
+Vendor 1 added ticket : 36
+
+Waiting for customers to buy available ticket
+
+
+Waiting for customers to buy available ticket
+
+Customer 2 purchased ticket : 17
+Vendor 1 added ticket : 37
+
+Waiting for customers to buy available ticket
+
+
+Waiting for customers to buy available ticket
+
+Customer 1 purchased ticket : 18
+Vendor 1 added ticket : 38
+
+Waiting for customers to buy available ticket
+
+
+Waiting for customers to buy available ticket
+
+Customer 2 purchased ticket : 19
+Vendor 1 added ticket : 39
+
+Waiting for customers to buy available ticket
+
+
+Waiting for customers to buy available ticket
+
+Customer 1 purchased ticket : 20
+Vendor 1 added ticket : 40
+
+Waiting for customers to buy available ticket
+
+
+Waiting for customers to buy available ticket
+
+Customer 2 has stopped purchasing as no more tickets are available or max reached.
+Customer 1 purchased ticket : 21
+Vendor 1 added ticket : 41
+
+Waiting for customers to buy available ticket
+
+
+Waiting for customers to buy available ticket
+
+Customer 1 purchased ticket : 22
+Vendor 1 added ticket : 42
+
+Waiting for customers to buy available ticket
+
+
+Waiting for customers to buy available ticket
+
+Customer 1 purchased ticket : 23
+Vendor 1 added ticket : 43
+
+Waiting for customers to buy available ticket
+
+
+Waiting for customers to buy available ticket
+
+Customer 1 purchased ticket : 24
+Vendor 1 added ticket : 44
+
+Waiting for customers to buy available ticket
+
+
+Waiting for customers to buy available ticket
+
+Customer 1 purchased ticket : 25
+Vendor 1 added ticket : 45
+
+Waiting for customers to buy available ticket
+
+Vendor 1 has stopped issuing tickets.
+Customer 1 purchased ticket : 26
+Vendor 2 added ticket : 46
+
+Waiting for customers to buy available ticket
+
+Customer 1 purchased ticket : 27
+Vendor 2 added ticket : 47
+
+Waiting for customers to buy available ticket
+
+Customer 1 purchased ticket : 28
+Vendor 2 added ticket : 48
+
+Waiting for customers to buy available ticket
+
+Customer 1 purchased ticket : 29
+Vendor 2 added ticket : 49
+
+Waiting for customers to buy available ticket
+
+Customer 1 purchased ticket : 30
+Vendor 2 added ticket : 50
+Vendor 2 has stopped issuing tickets.
+Customer 1 has stopped purchasing as no more tickets are available or max reached.

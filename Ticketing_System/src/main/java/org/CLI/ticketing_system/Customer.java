@@ -12,13 +12,16 @@ public class Customer implements Runnable{
     private int customerId;
     private int retrievalInterval;
     private TicketPool ticketPool;
+    private int ticketCount;
 
     private Logging logging;
 
-    public Customer(int customerId, int retrievalInterval, TicketPool ticketPool) {
+    public Customer(int customerId, int retrievalInterval,int ticketCount, TicketPool ticketPool) {
         this.customerId = customerId;
         this.retrievalInterval = retrievalInterval;
         this.ticketPool = ticketPool;
+        this.ticketCount = ticketCount;
+
 
         try{
             this.logging = Logging.getInstance("src/main/resources/Logging.txt");
@@ -27,12 +30,15 @@ public class Customer implements Runnable{
         }
     }
 
+    int purchasedTickets = 0;
+
 //    run method
     @Override
     public void run() {
         try {
-            while (ticketPool.hasTickets()) {
+            while (ticketCount>purchasedTickets) {
                 Integer ticket = ticketPool.removeTickets(customerId);
+                purchasedTickets++;
                 if (ticket == null) {
                     String out = "Customer " + customerId + " found no tickets available.";
                     System.out.println(out);

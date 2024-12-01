@@ -108,7 +108,7 @@ public class CLI {
                     int numTickets = scanner.nextInt();
                     scanner.nextLine();
 
-                    Customer customer = new Customer(customerId,jsonfile.getCustomerRetrievalRate(),ticketPool);
+                    Customer customer = new Customer(customerId,jsonfile.getCustomerRetrievalRate(),numTickets,ticketPool);
                     Thread customerThread = new Thread(customer);
                     customerThreads.add(customerThread);
                     customerId++;
