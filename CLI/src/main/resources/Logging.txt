@@ -1,0 +1,13 @@
+Vendor 1 added ticket : 1
+Vendor 1 added ticket : 2
+Vendor 1 added ticket : 3
+Customer 1 purchased ticket : 1
+Customer 1 purchased ticket : 2
+Vendor 1 added ticket : 4
+Vendor 1 added ticket : 5
+Vendor 1 added ticket : 6
+Customer 1 purchased ticket : 3
+Customer 1 purchased ticket : 4
+Vendor 1 has stopped issuing tickets.
+Customer 1 purchased ticket : 5
+Customer 1 has stopped purchasing as no more tickets are available or max reached.
