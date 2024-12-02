@@ -42,6 +42,7 @@ public class Configuration {
     }
 
     public void setTicketReleaseRate(int ticketReleaseRate) {
+
         this.ticketReleaseRate = ticketReleaseRate;
     }
 
