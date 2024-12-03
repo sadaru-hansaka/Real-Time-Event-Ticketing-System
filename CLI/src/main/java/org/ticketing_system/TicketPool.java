@@ -27,7 +27,6 @@ public class TicketPool {
     }
 
 
-
 //    adding tickets to the ticket pool
     public synchronized boolean addTickets(int count,int vendor) throws InterruptedException {
         if (ticketID > totalTicket) {

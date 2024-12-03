@@ -114,6 +114,8 @@ public class Main {
                     Thread customerThread = new Thread(customer);
                     customerThreads.add(customerThread);
                     customerId++;
+                }else {
+                    System.out.println("Invalid option. Try again!.");
                 }
             }else if(line.equalsIgnoreCase("n")) {
                 System.out.print("\nDo you want to Start the System? (Y/N) : ");
@@ -131,6 +133,9 @@ public class Main {
                     System.out.println("Exiting Ticketing System");
                 }
                 break;
+            }else{
+                System.out.println("\nInvalid Option! Try again.");
+                continue;
             }
 
         }
