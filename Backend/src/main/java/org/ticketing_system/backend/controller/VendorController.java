@@ -5,6 +5,8 @@ import org.springframework.web.bind.annotation.*;
 import org.ticketing_system.backend.model.Vendor;
 import org.ticketing_system.backend.service.VendorService;
 
+import java.util.Map;
+
 @RestController
 @RequestMapping("/Vendor")
 public class VendorController {
@@ -25,11 +27,13 @@ public class VendorController {
         return "Vendor " + vendor_id + " started.";
     }
 
-    @PostMapping("/start")
-    public String startVendorThreads() {
-        for (Vendor vendor:vendorService.getAllVendors().values()){
-            vendorService.runVendor(vendor.getVendor_id());
-        }
-        return "Vendor threads started.";
-    }
+//    @PostMapping("Start")
+//    public String startVendor() {
+//        Map<Integer,Vendor> vendors = vendorService.getVendors();
+//
+//        for (Integer vendor_id : vendors.keySet()) {
+//            vendorService.runVendor(vendor_id);
+//        }
+//        return "Vendors started.";
+//    }
 }
