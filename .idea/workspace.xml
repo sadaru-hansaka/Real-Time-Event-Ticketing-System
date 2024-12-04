@@ -5,15 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f59a9d39-f11a-42f4-9efc-3a16fe9d97ef" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Ticketing_System/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Ticketing_System/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Ticketing_System/src/main/java/org/Backend/ticketing_system/Customer.java" beforeDir="false" afterPath="$PROJECT_DIR$/Ticketing_System/src/main/java/org/CLI/ticketing_system/Customer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Ticketing_System/src/main/java/org/Backend/ticketing_system/TicketPool.java" beforeDir="false" afterPath="$PROJECT_DIR$/Ticketing_System/src/main/java/org/CLI/ticketing_system/TicketPool.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Ticketing_System/src/main/java/org/Backend/ticketing_system/TicketingSystemApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/Ticketing_System/src/main/java/org/Backend/ticketing_system/TicketingSystemApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Ticketing_System/src/main/java/org/Backend/ticketing_system/Vendor.java" beforeDir="false" afterPath="$PROJECT_DIR$/Ticketing_System/src/main/java/org/CLI/ticketing_system/Vendor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Ticketing_System/src/main/java/org/CLI/ticketing_system/ConfigurationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Ticketing_System/src/main/java/org/CLI/ticketing_system/ConfigurationController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Ticketing_System/src/main/java/org/CLI/ticketing_system/Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/Ticketing_System/src/main/java/org/CLI/ticketing_system/Test.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Ticketing_System/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/Ticketing_System/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Ticketing_System/src/main/resources/config.json" beforeDir="false" afterPath="$PROJECT_DIR$/Ticketing_System/src/main/resources/config.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,24 +23,24 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.ConfigurationController.executor": "Run",
-    "Application.Test.executor": "Run",
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "Spring Boot.TicketingSystemApplication.executor": "Run",
-    "git-widget-placeholder": "main",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "E:/L5/Semester 1/OOP/OOP-CW",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.ConfigurationController.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Test.executor&quot;: &quot;Run&quot;,
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;Spring Boot.TicketingSystemApplication.executor&quot;: &quot;Run&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;E:/L5/Semester 1/OOP/OOP-CW&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
-  <component name="RunManager">
+}</component>
+  <component name="RunManager" selected="Application.ConfigurationController">
     <configuration name="ConfigurationController" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="org.example.ticketing_system.configuration.ConfigurationController" />
       <module name="Ticketing_System" />
@@ -108,6 +100,7 @@
       <updated>1732373959704</updated>
       <workItem from="1732373960912" duration="265000" />
       <workItem from="1732947305237" duration="28000" />
+      <workItem from="1733208970363" duration="45000" />
     </task>
     <servers />
   </component>

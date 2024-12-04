@@ -52,6 +52,19 @@ public class TicketPoolService {
         return true;
     }
 
+    public synchronized Integer removeTickets(int customer_id) throws InterruptedException {
+        Integer ticket = ticketPool.poll();
+        if(ticket!=null){
+            System.out.println("Customer "+customer_id+" purchased ticket : "+ticket);
+            availableTicket--;
+            notifyAll();
+        }else{
+            System.out.println("Ticket pool is empty");
+        }
+        return ticket;
+    }
+
+
     public synchronized boolean hasTickets() {
         return !ticketPool.isEmpty();
     }

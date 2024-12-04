@@ -1,0 +1,73 @@
+Vendor 2 added ticket : 1
+Vendor 2 added ticket : 2
+Vendor 2 added ticket : 3
+Vendor 2 added ticket : 4
+Vendor 2 added ticket : 5
+Customer 1 purchased ticket : 1
+Vendor 1 added ticket : 6
+Vendor 1 added ticket : 7
+Vendor 1 added ticket : 8
+Vendor 1 added ticket : 9
+Vendor 1 added ticket : 10
+Customer 1 purchased ticket : 2
+Vendor 2 added ticket : 11
+Vendor 2 added ticket : 12
+
+Waiting for customers to buy available ticket
+
+Customer 1 purchased ticket : 3
+Vendor 2 added ticket : 13
+
+Waiting for customers to buy available ticket
+
+
+Waiting for customers to buy available ticket
+
+Customer 1 purchased ticket : 4
+Vendor 2 added ticket : 14
+
+Waiting for customers to buy available ticket
+
+
+Waiting for customers to buy available ticket
+
+Customer 1 purchased ticket : 5
+Vendor 2 added ticket : 15
+
+Waiting for customers to buy available ticket
+
+Customer 1 purchased ticket : 6
+Vendor 1 added ticket : 16
+
+Waiting for customers to buy available ticket
+
+Vendor 2 has stopped issuing tickets.
+Customer 1 purchased ticket : 7
+Vendor 1 added ticket : 17
+
+Waiting for customers to buy available ticket
+
+Customer 1 purchased ticket : 8
+Vendor 1 added ticket : 18
+
+Waiting for customers to buy available ticket
+
+Customer 1 purchased ticket : 9
+Vendor 1 added ticket : 19
+
+Waiting for customers to buy available ticket
+
+Customer 1 purchased ticket : 10
+Vendor 1 added ticket : 20
+Vendor 1 has stopped issuing tickets.
+Customer 1 purchased ticket : 11
+Customer 1 purchased ticket : 12
+Customer 1 purchased ticket : 13
+Customer 1 purchased ticket : 14
+Customer 1 purchased ticket : 15
+Customer 1 purchased ticket : 16
+Customer 1 purchased ticket : 17
+Customer 1 purchased ticket : 18
+Customer 1 purchased ticket : 19
+Customer 1 purchased ticket : 20
+Customer 1 has stopped purchasing as no more tickets are available or max reached.
