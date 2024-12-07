@@ -16,9 +16,8 @@ public class CustomerController {
 
     @PostMapping("/create")
     public Customer createCustomer(
-            @RequestParam int customer_id,
             @RequestParam int ticketCount) {
-        return customerService.createCustomer(customer_id, ticketCount);
+        return customerService.createCustomer(ticketCount);
     }
 
 //    @PostMapping("/{customer_id}/run")

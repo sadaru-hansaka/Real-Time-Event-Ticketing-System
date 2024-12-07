@@ -10,6 +10,7 @@ import java.io.IOException;
 
 @RestController
 @RequestMapping("/Configuration")
+@CrossOrigin(origins = "http://localhost:5173")
 public class ConfigurationController {
 
     @Autowired

@@ -14,6 +14,7 @@ import java.util.Map;
 @Service
 public class VendorService {
     private final Map<Integer, Vendor> vendors = new HashMap<>();
+    private int vendor_id = 1;
 
     @Autowired
     private TicketPoolService ticketPoolService;
@@ -21,12 +22,13 @@ public class VendorService {
     @Autowired
     private ConfigurationService configurationService;
 
-    public Vendor createVendor(int vendor_id, int ticketsPerRelease, int numOfTickets) {
+    public Vendor createVendor(int ticketsPerRelease, int numOfTickets) {
         try{
             Configuration configuration = configurationService.getData();
             int releaseInterval =configuration.getTicketReleaseRate();
             Vendor vendor = new Vendor(vendor_id, ticketsPerRelease, releaseInterval, numOfTickets);
             vendors.put(vendor_id, vendor);
+            vendor_id++;
             return vendor;
         }catch (IOException e){
             e.printStackTrace();
@@ -47,5 +49,9 @@ public class VendorService {
 
     public Map<Integer,Vendor> getVendors() {
         return vendors;
+    }
+
+    public int getNextID(){
+        return vendor_id;
     }
 }

@@ -15,7 +15,7 @@ import java.util.concurrent.ConcurrentHashMap;
 @Service
 public class CustomerService{
     private Map<Integer, Customer> customers = new ConcurrentHashMap<>();
-    private int customerID;
+    private int customer_id = 1;
 
     @Autowired
     private TicketPoolService ticketPoolService;
@@ -24,16 +24,14 @@ public class CustomerService{
     private ConfigurationService configurationService;
 
 
-    public void setCustomersID(int customerID){
-        this.customerID = customerID;
-    }
+    public Customer createCustomer(int ticketCount) {
 
-    public Customer createCustomer(int customer_id,int ticketCount) {
         try{
             Configuration configuration = configurationService.getData();
             int retrievalRate = configuration.getCustomerRetrievalRate();
             Customer customer = new Customer(customer_id,retrievalRate,ticketCount);
             customers.put(customer_id,customer);
+            customer_id++;
             return customer;
         } catch (IOException e) {
             throw new RuntimeException(e);
