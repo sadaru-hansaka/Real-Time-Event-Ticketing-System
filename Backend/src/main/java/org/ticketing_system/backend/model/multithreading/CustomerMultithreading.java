@@ -22,6 +22,11 @@ public class CustomerMultithreading implements Runnable{
         try {
             while (customer.getTicketCount()>purchasedTickets) {
 
+                if(Thread.currentThread().isInterrupted()) {
+                    System.out.println("Thread is interrupted");
+                    break;
+                }
+
                 Integer ticket = ticketPoolService.removeTickets(customer_id);
                 purchasedTickets++;
                 if (ticket == null) {

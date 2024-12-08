@@ -23,6 +23,12 @@ public class VendorMultithreading implements Runnable {
         try {
             while (numOfTickets > 0) {
                 synchronized (ticketPoolService) {
+
+                    if(Thread.currentThread().isInterrupted()) {
+                        System.out.println("Thread is interrupted");
+                        break;
+                    }
+
                     // Determine how many tickets can be released
                     int ticketsToRelease = Math.min(vendor.getTicketsPerRelease(),numOfTickets);
                     boolean added = ticketPoolService.addTicket(ticketsToRelease,vendor_id);

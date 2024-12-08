@@ -1,6 +1,7 @@
 package org.ticketing_system.backend.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -39,6 +40,13 @@ public class SystemController {
         }
 
         return "All customers and Vendors are now running in separate threads.";
+    }
+
+    @PostMapping("/stop")
+    public ResponseEntity<Void> stopAll(){
+        customerService.stopCustomer();
+        vendorService.stopVendor();
+        return ResponseEntity.ok().build();
     }
 
 

@@ -10,10 +10,12 @@ import org.ticketing_system.backend.model.multithreading.VendorMultithreading;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 @Service
 public class VendorService {
-    private final Map<Integer, Vendor> vendors = new HashMap<>();
+    private final Map<Integer, Vendor> vendors = new ConcurrentHashMap<>();
+    private final Map<Integer, Thread>  vendorThreads = new ConcurrentHashMap<>();
     private int vendor_id = 1;
 
     @Autowired
@@ -44,7 +46,16 @@ public class VendorService {
             return;
         }
         Thread vendorThread = new Thread(new VendorMultithreading(vendor,ticketPoolService,vendor_id));
+        vendorThreads.put(vendor_id, vendorThread);
         vendorThread.start();
+    }
+
+//    Stop all vendors
+    public void stopVendor() {
+        for(Thread thread : vendorThreads.values()) {
+            thread.interrupt();
+        }
+        vendorThreads.clear();
     }
 
     public Map<Integer,Vendor> getVendors() {

@@ -14,7 +14,10 @@ import java.util.concurrent.ConcurrentHashMap;
 
 @Service
 public class CustomerService{
-    private Map<Integer, Customer> customers = new ConcurrentHashMap<>();
+
+    private final Map<Integer, Customer> customers = new ConcurrentHashMap<>();
+    private final Map<Integer, Thread> customerThreads = new ConcurrentHashMap<>();
+
     private int customer_id = 1;
 
     @Autowired
@@ -47,7 +50,16 @@ public class CustomerService{
             return;
         }
         Thread customerThread = new Thread(new CustomerMultithreading(customer, ticketPoolService, customerID));
+        customerThreads.put(customerID, customerThread);
         customerThread.start();
+    }
+
+//  Stop all customers
+    public void stopCustomer() {
+        for(Thread thread: customerThreads.values()){
+            thread.interrupt();
+        }
+        customerThreads.clear();
     }
 
     public Map<Integer,Customer> getCustomers() {
