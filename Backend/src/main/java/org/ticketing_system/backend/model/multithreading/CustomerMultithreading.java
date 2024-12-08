@@ -21,11 +21,13 @@ public class CustomerMultithreading implements Runnable{
         int purchasedTickets = 0;
         try {
             while (customer.getTicketCount()>purchasedTickets) {
+
                 Integer ticket = ticketPoolService.removeTickets(customer_id);
                 purchasedTickets++;
                 if (ticket == null) {
                     String out = "Customer " + customer_id + " found no tickets available.";
                     System.out.println(out);
+                    break;
                 }
 
                 // Wait before attempting to retrieve another ticket

@@ -4,6 +4,8 @@ import org.ticketing_system.backend.model.Vendor;
 import org.ticketing_system.backend.service.TicketPoolService;
 import org.ticketing_system.backend.service.VendorService;
 
+import java.io.IOException;
+
 public class VendorMultithreading implements Runnable {
     private int vendor_id;
     private final Vendor vendor;
@@ -44,6 +46,8 @@ public class VendorMultithreading implements Runnable {
         } catch (InterruptedException e) {
             System.out.println("Vendor " + vendor_id + " interrupted.");
             Thread.currentThread().interrupt();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
     }
 }

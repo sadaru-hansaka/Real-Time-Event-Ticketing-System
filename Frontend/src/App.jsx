@@ -5,6 +5,7 @@ import NavBar from './components/NavBar'
 import Vendor from './components/Vendor';
 import SystemLogs from './components/SystemLogs';
 import Customer from './components/Customer'
+import ControlPanel from './components/ControlPanel';
 
 function App() {
 
@@ -20,6 +21,7 @@ function App() {
               <Route path='/customer' element={<Customer/>}/>
             </Routes>
           </div>
+          <ControlPanel/>
         </div>
         <div className='w-1/4 bg-slate-400'>
           <SystemLogs/>

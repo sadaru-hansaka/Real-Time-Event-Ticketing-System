@@ -9,15 +9,21 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/Customer")
+@CrossOrigin(origins = "http://localhost:5173")
 public class CustomerController {
 
     @Autowired
     private CustomerService customerService;
 
     @PostMapping("/create")
-    public Customer createCustomer(
-            @RequestParam int ticketCount) {
+    public Customer createCustomer(@RequestBody Map<String,Integer> customerData) {
+        int ticketCount = customerData.get("ticketCount");
         return customerService.createCustomer(ticketCount);
+    }
+
+    @GetMapping("/nextId")
+    public int nextID(){
+        return customerService.getCustomerID();
     }
 
 //    @PostMapping("/{customer_id}/run")

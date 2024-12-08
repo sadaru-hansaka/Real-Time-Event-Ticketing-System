@@ -14,37 +14,53 @@ import java.util.concurrent.ConcurrentLinkedDeque;
 public class TicketPoolService {
 
     private final ConcurrentLinkedDeque<Integer> ticketPool = new ConcurrentLinkedDeque<>();
+    private final List<String> logs = new ArrayList<>(); //to store logs
 
-    private final int maxTicket;
+//    private final int maxTicket;
     private int ticket_id = 1;
     private int availableTicket = 0;
-    private final int totalTicket;
+//    private final int totalTicket;
 
     @Autowired
-    public TicketPoolService(ConfigurationService configurationService) throws IOException {
-        Configuration configuration = configurationService.getData();
-        this.maxTicket = configuration.getMaxTicketCapacity();
-        this.totalTicket = configuration.getTotalTickets();
-    }
+    private ConfigurationService configurationService;
 
-    public synchronized boolean addTicket(int count,int vendor_id) throws InterruptedException {
+//    @Autowired
+//    public TicketPoolService(ConfigurationService configurationService) throws IOException {
+//        Configuration configuration = configurationService.getData();
+//        this.maxTicket = configuration.getMaxTicketCapacity();
+//        this.totalTicket = configuration.getTotalTickets();
+//    }
+
+    public synchronized boolean addTicket(int count,int vendor_id) throws InterruptedException, IOException {
+        Configuration configuration = configurationService.getData();
+        int maxTicket = configuration.getMaxTicketCapacity();
+        int totalTicket = configuration.getTotalTickets();
+
         if(ticket_id>totalTicket){
-            System.out.println("Maximum reached");
+            String out = "Maximum reached";
+            System.out.println(out);
+            logs.add(out);
             return false;
         }
 
         for (int i = 1; i <= count; i++) {
             while (availableTicket>=maxTicket){
-                System.out.println("Waiting");
+                String out1 = "Waiting";
+                System.out.println(out1);
+                logs.add(out1);
                 wait();
             }
             if(ticket_id>totalTicket){
-                System.out.println("Maximum reached");
+                String out = "Maximum reached";
+                System.out.println(out);
+                logs.add(out);
                 return false;
             }
 
             ticketPool.add(ticket_id);
-            System.out.println("Vendor "+vendor_id+" added ticket : "+ticket_id);
+            String ticketadd = "Vendor "+vendor_id+" added ticket : "+ticket_id;
+            System.out.println(ticketadd);
+            logs.add(ticketadd);
             ticket_id++;
             availableTicket++;
         }
@@ -55,25 +71,37 @@ public class TicketPoolService {
     public synchronized Integer removeTickets(int customer_id) throws InterruptedException {
         Integer ticket = ticketPool.poll();
         if(ticket!=null){
-            System.out.println("Customer "+customer_id+" purchased ticket : "+ticket);
+            String ticketbuy = "Customer "+customer_id+" purchased ticket : "+ticket;
+            System.out.println(ticketbuy);
+            logs.add(ticketbuy);
             availableTicket--;
             notifyAll();
         }else{
-            System.out.println("Ticket pool is empty");
+            String empty = "Ticket pool is empty, Customer "+customer_id+" stopped purchasing ticket";
+            System.out.println(empty);
+            logs.add(empty);
+            return null;
         }
         return ticket;
     }
 
 
-    public synchronized boolean hasTickets() {
-        return !ticketPool.isEmpty();
-    }
-
     public synchronized boolean isCapacityFull() {
-        return ticket_id> totalTicket;
+        try{
+            Configuration configuration = configurationService.getData();
+            int totalTicket = configuration.getTotalTickets();
+            return ticket_id>totalTicket;
+        } catch (IOException e) {
+            e.printStackTrace();
+            return false;
+        }
     }
 
     public synchronized List<Integer> getTickets() {
         return new ArrayList<>(ticketPool);
+    }
+
+    public List<String> getLogs(){
+        return new ArrayList<>(logs);
     }
 }

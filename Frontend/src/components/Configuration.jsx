@@ -47,7 +47,7 @@ const Configuration = () =>{
 
 
     return(
-      <div className="flex justify-center items-center w-full h-full">
+      <div className="flex justify-center items-center w-full">
         <div className="w-[400px] m-2 p-4 border-2 border-black px-5 py-2 rounded-lg bg-slate-300">
           <h1 className="text-2xl mb-[20px]">Inputh configuration parameters : </h1>
             <form className="flex flex-col" onSubmit={handleSubmit}>

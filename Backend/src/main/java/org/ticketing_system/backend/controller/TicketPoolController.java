@@ -11,6 +11,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/tickets")
+@CrossOrigin(origins = "http://localhost:5173")
 public class TicketPoolController {
 
     @Autowired
@@ -19,5 +20,10 @@ public class TicketPoolController {
     @GetMapping("/status")
     public List<Integer> viewTickets() {
         return ticketPoolService.getTickets();
+    }
+
+    @GetMapping("/logs")
+    public List<String> getLogs() {
+        return ticketPoolService.getLogs();
     }
 }

@@ -54,5 +54,7 @@ public class CustomerService{
         return customers;
     }
 
-
+    public int getCustomerID() {
+        return customer_id;
+    }
 }
