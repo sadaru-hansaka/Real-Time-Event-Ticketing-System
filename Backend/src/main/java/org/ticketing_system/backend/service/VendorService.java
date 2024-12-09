@@ -24,6 +24,9 @@ public class VendorService {
     @Autowired
     private ConfigurationService configurationService;
 
+    @Autowired
+    private LoggingService loggingService;
+
     public Vendor createVendor(int ticketsPerRelease, int numOfTickets) {
         try{
             Configuration configuration = configurationService.getData();
@@ -45,7 +48,7 @@ public class VendorService {
             System.out.println("Vendor " + vendor_id + " not found");
             return;
         }
-        Thread vendorThread = new Thread(new VendorMultithreading(vendor,ticketPoolService,vendor_id));
+        Thread vendorThread = new Thread(new VendorMultithreading(vendor,ticketPoolService,loggingService,vendor_id));
         vendorThreads.put(vendor_id, vendorThread);
         vendorThread.start();
     }

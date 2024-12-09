@@ -7,7 +7,7 @@ function SystemLogs() {
 
   useEffect(() => {
     const interval = setInterval(()=>{
-      fetch('http://localhost:8080/tickets/logs')
+      fetch('http://localhost:8080/Logging/logs')
       .then((response)=>response.json())
       .then((data) => setLogs(data))
       .catch((error) => console.error("Error fetching logs data:",error));

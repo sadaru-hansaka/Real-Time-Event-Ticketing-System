@@ -1,6 +1,7 @@
 package org.ticketing_system.backend.model.multithreading;
 
 import org.ticketing_system.backend.model.Vendor;
+import org.ticketing_system.backend.service.LoggingService;
 import org.ticketing_system.backend.service.TicketPoolService;
 import org.ticketing_system.backend.service.VendorService;
 
@@ -10,10 +11,12 @@ public class VendorMultithreading implements Runnable {
     private int vendor_id;
     private final Vendor vendor;
     private final TicketPoolService ticketPoolService;
+    private final LoggingService loggingService;
 
-    public VendorMultithreading(Vendor vendor, TicketPoolService ticketPoolService, int vendor_id) {
+    public VendorMultithreading(Vendor vendor, TicketPoolService ticketPoolService,LoggingService loggingService, int vendor_id) {
         this.vendor = vendor;
         this.ticketPoolService = ticketPoolService;
+        this.loggingService=loggingService;
         this.vendor_id = vendor_id;
     }
 
@@ -25,7 +28,9 @@ public class VendorMultithreading implements Runnable {
                 synchronized (ticketPoolService) {
 
                     if(Thread.currentThread().isInterrupted()) {
-                        System.out.println("Thread is interrupted");
+                        String interrupt = "Thread is interrupted";
+                        System.out.println(interrupt);
+                        loggingService.log(interrupt);
                         break;
                     }
 
@@ -35,6 +40,7 @@ public class VendorMultithreading implements Runnable {
                     if (!added) {
                         String out2 = "Vendor " + vendor_id + " stopped as no tickets can be added.";
                         System.out.println(out2);
+                        loggingService.log(out2);
                         break; // Stop if tickets can't be added
                     }
                     // calculate how many were actually added
@@ -49,6 +55,7 @@ public class VendorMultithreading implements Runnable {
             }
             String stopped = "Vendor " + vendor_id + " has stopped issuing tickets.";
             System.out.println(stopped);
+            loggingService.log(stopped);
         } catch (InterruptedException e) {
             System.out.println("Vendor " + vendor_id + " interrupted.");
             Thread.currentThread().interrupt();

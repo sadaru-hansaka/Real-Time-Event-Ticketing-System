@@ -26,6 +26,9 @@ public class CustomerService{
     @Autowired
     private ConfigurationService configurationService;
 
+    @Autowired
+    private LoggingService loggingService;
+
 
     public Customer createCustomer(int ticketCount) {
 
@@ -49,7 +52,7 @@ public class CustomerService{
             System.out.println("Customer not found");
             return;
         }
-        Thread customerThread = new Thread(new CustomerMultithreading(customer, ticketPoolService, customerID));
+        Thread customerThread = new Thread(new CustomerMultithreading(customer, ticketPoolService,loggingService, customerID));
         customerThreads.put(customerID, customerThread);
         customerThread.start();
     }

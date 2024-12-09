@@ -1,6 +1,8 @@
 package org.ticketing_system.backend.model.multithreading;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.ticketing_system.backend.model.Customer;
+import org.ticketing_system.backend.service.LoggingService;
 import org.ticketing_system.backend.service.TicketPoolService;
 
 import static java.lang.Thread.sleep;
@@ -9,10 +11,12 @@ public class CustomerMultithreading implements Runnable{
     private int customer_id;
     private final Customer customer;
     private final TicketPoolService ticketPoolService;
+    private final LoggingService loggingService;
 
-    public CustomerMultithreading(Customer customer, TicketPoolService ticketPoolService, int customer_id) {
+    public CustomerMultithreading(Customer customer, TicketPoolService ticketPoolService,LoggingService loggingService, int customer_id) {
         this.customer = customer;
         this.ticketPoolService = ticketPoolService;
+        this.loggingService = loggingService;
         this.customer_id = customer_id;
     }
 
@@ -23,7 +27,9 @@ public class CustomerMultithreading implements Runnable{
             while (customer.getTicketCount()>purchasedTickets) {
 
                 if(Thread.currentThread().isInterrupted()) {
-                    System.out.println("Thread is interrupted");
+                    String interrupt = "Thread is interrupted";
+                    System.out.println(interrupt);
+                    loggingService.log(interrupt);
                     break;
                 }
 
@@ -32,6 +38,7 @@ public class CustomerMultithreading implements Runnable{
                 if (ticket == null) {
                     String out = "Customer " + customer_id + " found no tickets available.";
                     System.out.println(out);
+                    loggingService.log(out);
                     break;
                 }
 
@@ -40,6 +47,7 @@ public class CustomerMultithreading implements Runnable{
             }
             String custout = "Customer " + customer_id + " has stopped purchasing as no more tickets are available or max reached.";
             System.out.println(custout);
+            loggingService.log(custout);
         } catch (InterruptedException e) {
             System.out.println("Customer " + customer_id + " interrupted.");
             Thread.currentThread().interrupt(); // Restore interrupted status

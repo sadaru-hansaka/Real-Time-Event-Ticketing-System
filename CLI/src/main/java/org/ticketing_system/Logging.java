@@ -6,7 +6,7 @@ import java.io.IOException;
 
 public class Logging {
 
-    private static Logging log;
+    private static Logging log; //holds a single instance of the class
     private BufferedWriter bufferedWriter;
 
     private Logging(String filename){
@@ -17,12 +17,14 @@ public class Logging {
         }
     }
 
+//    if there's no file , creates a new fil
     public static synchronized Logging getInstance(String filename) throws IOException {
         if (log == null) {
             log = new Logging(filename);
         }
         return log;
     }
+
 
     public synchronized void log(String txt) {
         try{

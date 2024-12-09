@@ -17,13 +17,10 @@ public class TicketPoolController {
     @Autowired
     private TicketPoolService ticketPoolService;
 
-    @GetMapping("/status")
-    public List<Integer> viewTickets() {
-        return ticketPoolService.getTickets();
-    }
+//    @GetMapping("/status")
+//    public List<Integer> viewTickets() {
+//        return ticketPoolService.getTickets();
+//    }
 
-    @GetMapping("/logs")
-    public List<String> getLogs() {
-        return ticketPoolService.getLogs();
-    }
+
 }

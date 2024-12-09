@@ -41,6 +41,7 @@ public class Customer implements Runnable{
                     String out = "Customer " + customerId + " found no tickets available.";
                     System.out.println(out);
                     logging.log(out);
+                    break;
                 }
 
                 // Wait before attempting to retrieve another ticket

@@ -14,22 +14,15 @@ import java.util.concurrent.ConcurrentLinkedDeque;
 public class TicketPoolService {
 
     private final ConcurrentLinkedDeque<Integer> ticketPool = new ConcurrentLinkedDeque<>();
-    private final List<String> logs = new ArrayList<>(); //to store logs
 
-//    private final int maxTicket;
     private int ticket_id = 1;
     private int availableTicket = 0;
-//    private final int totalTicket;
 
     @Autowired
     private ConfigurationService configurationService;
 
-//    @Autowired
-//    public TicketPoolService(ConfigurationService configurationService) throws IOException {
-//        Configuration configuration = configurationService.getData();
-//        this.maxTicket = configuration.getMaxTicketCapacity();
-//        this.totalTicket = configuration.getTotalTickets();
-//    }
+    @Autowired
+    private LoggingService loggingService;
 
     public synchronized boolean addTicket(int count,int vendor_id) throws InterruptedException, IOException {
         Configuration configuration = configurationService.getData();
@@ -37,30 +30,30 @@ public class TicketPoolService {
         int totalTicket = configuration.getTotalTickets();
 
         if(ticket_id>totalTicket){
-            String out = "Maximum reached";
+            String out = "Reached maximum ticket count";
             System.out.println(out);
-            logs.add(out);
+            loggingService.log(out);
             return false;
         }
 
         for (int i = 1; i <= count; i++) {
             while (availableTicket>=maxTicket){
-                String out1 = "Waiting";
+                String out1 = "Ticket Pool reached maximum capacity.\n Waiting for customers to buy tickets...";
                 System.out.println(out1);
-                logs.add(out1);
+                loggingService.log(out1);
                 wait();
             }
             if(ticket_id>totalTicket){
-                String out = "Maximum reached";
+                String out = "Reached maximum ticket count";
                 System.out.println(out);
-                logs.add(out);
+                loggingService.log(out);
                 return false;
             }
 
             ticketPool.add(ticket_id);
             String ticketadd = "Vendor "+vendor_id+" added ticket : "+ticket_id;
             System.out.println(ticketadd);
-            logs.add(ticketadd);
+            loggingService.log(ticketadd);
             ticket_id++;
             availableTicket++;
         }
@@ -73,13 +66,13 @@ public class TicketPoolService {
         if(ticket!=null){
             String ticketbuy = "Customer "+customer_id+" purchased ticket : "+ticket;
             System.out.println(ticketbuy);
-            logs.add(ticketbuy);
+            loggingService.log(ticketbuy);
             availableTicket--;
             notifyAll();
         }else{
             String empty = "Ticket pool is empty, Customer "+customer_id+" stopped purchasing ticket";
             System.out.println(empty);
-            logs.add(empty);
+            loggingService.log(empty);
             return null;
         }
         return ticket;
@@ -97,11 +90,4 @@ public class TicketPoolService {
         }
     }
 
-    public synchronized List<Integer> getTickets() {
-        return new ArrayList<>(ticketPool);
-    }
-
-    public List<String> getLogs(){
-        return new ArrayList<>(logs);
-    }
 }
