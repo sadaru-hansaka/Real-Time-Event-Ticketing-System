@@ -1,28 +1,51 @@
 import React,{useEffect,useState} from "react";
 
 const Customer = () => {
+
+    //when click "Add" button all customer's input data goes to this array
     const[customerData,setCustomerData]=useState({
         ticketCount:0,
     });
-    const[customer,setCustomer] = useState([]);
+
     const [responseMessage, setResponseMessage] = useState("");
     const [nextId,setNextId]=useState(null);
+    // get customer's data from backend to display in frontend
+    const[customers,setCustomers]=useState([]);
 
+    // fetch customer's id from backend
     useEffect(()=> {
         const interval = setInterval(()=> {
             fetch("http://localhost:8080/Customer/nextId")
             .then((response)=>response.json())
             .then((data) => setNextId(data))
             .catch((error) => console.error("Error fetching next vendor ID:",error));
-        },200);
+        },200); //updates every 200 miliseconds
         return () => clearInterval(interval);
     },[]);
 
+    // catch user's input and save them to an list
     const saveCustomerChanges = (e) => {
         const {name,value} = e.target;
         setCustomerData({...customerData,[name]: Number(value)});
     }
 
+    // fetch all added customer's data from backend
+    useEffect(()=>{
+        const fetchCustomers = async () => {
+            try{
+                const response = await fetch ("http://localhost:8080/Customer/allCustomers");
+                const data = await response.json();
+                const customerArray = Object.values(data);
+
+                setCustomers(customerArray);
+            }catch{
+                console.error("Error fetching customers",error);
+            }
+        };
+        fetchCustomers();
+    },[]);
+
+    // submit user's data to backend to make threads
     const submit = async (e) => {
         e.preventDefault();
         try{
@@ -37,8 +60,11 @@ const Customer = () => {
                 const data = await response.json();
                 console.log("Data",data)
                 setResponseMessage(`Customer created successfully with ID: ${data.customer_id}`);
-                setCustomer([...customer, { ...customerData, id: data.customer_id }]);
-
+                //when click the add button , customer's data displays real time
+                const customersResponse = await fetch("http://localhost:8080/Customer/allCustomers");
+                const updateCustomers = await customersResponse.json();
+                const customerArray = Object.values(updateCustomers)
+                setCustomers(customerArray);
                 alert("Done");
             }else{
                 const errorData = await response.json();
@@ -68,20 +94,28 @@ const Customer = () => {
                     {responseMessage && <p>{responseMessage}</p>}
                 </form>
             </div>
+            {/* display added cutomers */}
             <div className="w-[400px] p-4 border-2 border-black px-5 py-2 rounded-lg bg-slate-300">
                 <h1>Customer Threads :</h1>
-                {customer.length === 0 ? (
-                    <p>No customers added yet.</p>
-                ) : (
+                {customers && customers.length > 0 ? (
                     <ul>
-                        {customer.map((customer, index) => (
+                        {customers.map((customer, index) => (
                             <li key={index}>
-                                <p>Vendor ID : {customer.id}</p>
-                                <p>Number of Tickets : {customer.ticketCount}</p>
+                                <p>
+                                    <strong>ID:</strong> {customer.customer_id}
+                                </p>
+                                <p>
+                                    <strong>Tickets:</strong> {customer.ticketCount}
+                                </p>
+                                <p>
+                                    <strong>Name:</strong> {customer.name || "N/A"}
+                                </p>
                                 <hr />
                             </li>
                         ))}
                     </ul>
+                ) : (
+                    <p>No customers available.</p>
                 )}
             </div>
         </div>

@@ -33,6 +33,11 @@ public class VendorController {
         return vendorService.getNextID();
     }
 
+    @GetMapping("/allVendors")
+    public Map<Integer,Vendor> getAllVendors() {
+        return vendorService.getVendors();
+    }
+
 //    @PostMapping("Start")
 //    public String startVendor() {
 //        Map<Integer,Vendor> vendors = vendorService.getVendors();

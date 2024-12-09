@@ -1,6 +1,7 @@
 import React,{useEffect, useState} from "react";
 
 const Vendor = () => {
+
     const[vendorData,setVendorData] = useState({
         ticketsPerRelease: 0,
         numOfTickets: 0
@@ -18,6 +19,21 @@ const Vendor = () => {
         },200);
         return () => clearInterval(interval);
     },[]);
+
+    useEffect(()=>{
+        const fetchVendors = async () => {
+            try{
+                const response = await fetch ("http://localhost:8080/Vendor/allVendors");
+                const data = await response.json();
+                const vendorArray = Object.values(data);
+
+                setVendor(vendorArray);
+            }catch{
+                console.error("Error fetching vendors",error);
+            }
+        };
+        fetchVendors();
+    });
 
 
     const saveChanges = (e) => {
@@ -39,7 +55,13 @@ const Vendor = () => {
                 const data = await response.json();
                 console.log("Data",data)
                 setResponseMessage(`Vendor created successfully with ID: ${data.vendor_id}`);
-                setVendor([...vendor, { ...vendorData, id: data.vendor_id }]);
+                
+                const response = await fetch ("http://localhost:8080/Vendor/allVendors");
+                const vendorData = await response.json();
+                const vendorArray = Object.values(vendorData);
+
+                setVendor(vendorArray);
+
                 alert("Done");
             }else{
                 const errorData = await response.json();
@@ -79,7 +101,7 @@ const Vendor = () => {
                     <ul>
                         {vendor.map((vendor, index) => (
                             <li key={index}>
-                                <p>Vendor ID: {vendor.id}</p>
+                                <p>Vendor ID: {vendor.vendor_id}</p>
                                 <p>Tickets Per Release: {vendor.ticketsPerRelease}</p>
                                 <p>Number of Tickets: {vendor.numOfTickets}</p>
                                 <hr />

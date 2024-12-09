@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.*;
 import org.ticketing_system.backend.model.Customer;
 import org.ticketing_system.backend.service.CustomerService;
 
+import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -27,6 +28,10 @@ public class CustomerController {
         return customerService.getCustomerID();
     }
 
+    @GetMapping("/allCustomers")
+    public Map<Integer,Customer> getALLCustomers() {
+        return customerService.getCustomers();
+    }
 //    @PostMapping("/{customer_id}/run")
 //    public String runCustomer(@PathVariable int customer_id) {
 //        customerService.run(customer_id);
