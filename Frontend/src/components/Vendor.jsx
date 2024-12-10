@@ -13,6 +13,20 @@ const Vendor = () => {
     const[errors,setErrors]=useState({});
     const[reaminSlots,setRemainSlots]=useState(null)
 
+    const[runningVendors,setRunningVendors] = useState([]);
+    const[completedVendors,setCompletedVendors] = useState([]);
+
+
+    useEffect(()=> {
+        const interval = setInterval(()=> {
+            fetch("http://localhost:8080/Vendor/completedVendors")
+            .then((response)=>response.json())
+            .then((data) => setCompletedVendors(data))
+            .catch((error) => console.error("Error fetching next vendor ID:",error));
+        },400); //updates every 400 miliseconds
+        return () => clearInterval(interval);
+    },[]);
+
     useEffect(()=> {
         const interval = setInterval(()=> {
             fetch("http://localhost:8080/Vendor/nextID")
@@ -42,8 +56,8 @@ const Vendor = () => {
             try{
                 const response = await fetch ("http://localhost:8080/Vendor/allVendors");
                 const data = await response.json();
+                // const vendorArray = Object.values(data);
                 const vendorArray = Object.values(data);
-
                 setVendor(vendorArray);
             }catch{
                 console.error("Error fetching vendors",error);
@@ -101,7 +115,7 @@ const Vendor = () => {
         const err = {};
 
         if(vendorData.numOfTickets>reaminSlots){
-            err.numOfTickets = "Number of tickets can not exceed ";
+            err.numOfTickets = `Number of tickets can not exceed ${reaminSlots}`;
         }
 
         setErrors(err);
@@ -132,6 +146,30 @@ const Vendor = () => {
         }
     }
 
+    // start vendor Threads
+    const runVendor = async (vendor_id) => {
+        console.log("Starting thread for customer:", vendor_id); 
+        try{
+            const response = await fetch(`http://localhost:8080/Vendor/${vendor_id}/run`,{
+                method: "POST",
+                headers: {
+                "Content-Type": "application/json",
+                },
+            });
+    
+            if(response.ok){
+                console.log("started");
+                setRunningVendors((prev) => [...prev, vendor_id]);
+            }else{
+                alert("Failed")
+            }
+        }catch (error){
+            console.error("Error starting threads.",error)
+        }
+    }
+    
+
+
     return(
         <div className="flex flex-row">
             <div className="w-[400px]  p-4 border-2 border-black px-5 py-2 rounded-lg bg-slate-300">
@@ -160,17 +198,25 @@ const Vendor = () => {
                     <p>No vendors added yet.</p>
                 ) : (
                     <ul>
-                        {vendor.map((vendor, index) => (
-                            <li key={index}>
+                        {vendor.map((vendor) => (
+                            <li key={vendor.vendor_id}>
                                 <p>Vendor ID: {vendor.vendor_id}</p>
                                 <p>Tickets Per Release: {vendor.ticketsPerRelease}</p>
                                 <p>Number of Tickets: {vendor.numOfTickets}</p>
-                                <hr />
+                                {completedVendors.includes(vendor.vendor_id)?(
+                                    <span>Done</span>
+                                ): runningVendors.includes(vendor.vendor_id)?(
+                                    <span>Thread Running ...</span>
+                                ):(
+                                    <button onClick={() => runVendor(vendor.vendor_id)}>Start</button>
+                                )}
+                                <hr/>
                             </li>
                         ))}
+                        
                     </ul>
                 )}
-                <button onClick={handleStart}>Start</button>
+                <button onClick={handleStart}>Run All Vendors</button>
             </div>
         </div>
     );

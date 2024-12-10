@@ -2,6 +2,7 @@ package org.ticketing_system.backend.model.multithreading;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.ticketing_system.backend.model.Customer;
+import org.ticketing_system.backend.service.CustomerService;
 import org.ticketing_system.backend.service.LoggingService;
 import org.ticketing_system.backend.service.TicketPoolService;
 
@@ -13,11 +14,15 @@ public class CustomerMultithreading implements Runnable{
     private final TicketPoolService ticketPoolService;
     private final LoggingService loggingService;
 
-    public CustomerMultithreading(Customer customer, TicketPoolService ticketPoolService,LoggingService loggingService, int customer_id) {
+
+    private CustomerService customerService;
+
+    public CustomerMultithreading(Customer customer, TicketPoolService ticketPoolService,LoggingService loggingService, int customer_id, CustomerService customerService) {
         this.customer = customer;
         this.ticketPoolService = ticketPoolService;
         this.loggingService = loggingService;
         this.customer_id = customer_id;
+        this.customerService = customerService;
     }
 
     @Override
@@ -51,6 +56,8 @@ public class CustomerMultithreading implements Runnable{
         } catch (InterruptedException e) {
             System.out.println("Customer " + customer_id + " interrupted.");
             Thread.currentThread().interrupt(); // Restore interrupted status
+        }finally {
+            customerService.markCompletedThreads(customer_id);
         }
     }
 }

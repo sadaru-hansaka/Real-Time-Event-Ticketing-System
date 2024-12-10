@@ -3,9 +3,11 @@ package org.ticketing_system.backend.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.ticketing_system.backend.model.Customer;
 import org.ticketing_system.backend.model.Vendor;
 import org.ticketing_system.backend.service.VendorService;
 
+import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -22,11 +24,6 @@ public class VendorController {
         return vendorService.createVendor(ticketsPerRelease,numOfTickets);
     }
 
-    @PostMapping("/{vendor_id}/run")
-    public String runVendor(@PathVariable int vendor_id) {
-        vendorService.runVendor(vendor_id);
-        return "Vendor " + vendor_id + " started.";
-    }
 
     @GetMapping("/nextID")
     public int nextId(){
@@ -52,5 +49,19 @@ public class VendorController {
             vendorService.runVendor(vendor_id);
         }
         return "Vendors started.";
+    }
+
+    //    run customer thread using customer id
+    @PostMapping("/{vendor_id}/run")
+    public ResponseEntity<?> runVendor(@PathVariable int vendor_id) {
+        Vendor vendor = vendorService.getVendors().get(vendor_id);
+
+        vendorService.runVendor(vendor_id);
+        return ResponseEntity.ok("Customer " + vendor_id);
+    }
+
+    @GetMapping("/completedVendors")
+    public List<Integer> getCompletedVendors() {
+        return vendorService.returnCompletedVendors();
     }
 }

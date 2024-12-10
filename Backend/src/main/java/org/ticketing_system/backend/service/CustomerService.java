@@ -1,15 +1,15 @@
 package org.ticketing_system.backend.service;
 
+import org.apache.catalina.LifecycleState;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.ticketing_system.backend.model.Configuration;
 import org.ticketing_system.backend.model.Customer;
-import org.ticketing_system.backend.model.Vendor;
 import org.ticketing_system.backend.model.multithreading.CustomerMultithreading;
 
 import java.io.IOException;
-import java.sql.SQLOutput;
-import java.util.HashMap;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -18,6 +18,8 @@ public class CustomerService{
 
     private final Map<Integer, Customer> customers = new ConcurrentHashMap<>();
     private final Map<Integer, Thread> customerThreads = new ConcurrentHashMap<>();
+
+    private final List<Integer> completedThreads = new ArrayList<>();
 
     private int customer_id = 1;
 
@@ -30,6 +32,7 @@ public class CustomerService{
     @Autowired
     private LoggingService loggingService;
 
+    @Autowired
     private VendorService vendorService;
 
     public CustomerService(VendorService vendorService) {
@@ -64,9 +67,14 @@ public class CustomerService{
             System.out.println("Customer not found");
             return;
         }
-        Thread customerThread = new Thread(new CustomerMultithreading(customer, ticketPoolService,loggingService, customerID));
+        Thread customerThread = new Thread(new CustomerMultithreading(customer, ticketPoolService,loggingService, customerID,this));
         customerThreads.put(customerID, customerThread);
         customerThread.start();
+    }
+
+//    return running customers
+    public Map<Integer, Thread> getRunningCustomers() {
+        return customerThreads;
     }
 
 //  Stop all customers
@@ -91,5 +99,13 @@ public class CustomerService{
         int tickets = customers.values().stream().mapToInt(Customer::getTicketCount).sum();
         int remain= sumOfTickets-tickets;
         return remain;
+    }
+
+    public void markCompletedThreads(int customer_id) {
+        completedThreads.add(customer_id);
+    }
+
+    public List<Integer> returnCompletedThreads() {
+        return completedThreads;
     }
 }

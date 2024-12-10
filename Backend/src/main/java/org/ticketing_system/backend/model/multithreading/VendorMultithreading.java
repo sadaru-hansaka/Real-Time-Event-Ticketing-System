@@ -12,12 +12,15 @@ public class VendorMultithreading implements Runnable {
     private final Vendor vendor;
     private final TicketPoolService ticketPoolService;
     private final LoggingService loggingService;
+    private final VendorService vendorService;
 
-    public VendorMultithreading(Vendor vendor, TicketPoolService ticketPoolService,LoggingService loggingService, int vendor_id) {
+    public VendorMultithreading(Vendor vendor, TicketPoolService ticketPoolService,LoggingService loggingService, int vendor_id,VendorService vendorService) {
         this.vendor = vendor;
         this.ticketPoolService = ticketPoolService;
         this.loggingService=loggingService;
         this.vendor_id = vendor_id;
+        this.vendorService = vendorService;
+
     }
 
     @Override
@@ -61,6 +64,8 @@ public class VendorMultithreading implements Runnable {
             Thread.currentThread().interrupt();
         } catch (IOException e) {
             throw new RuntimeException(e);
+        }finally {
+            vendorService.markCompletedVendors(vendor_id);
         }
     }
 }

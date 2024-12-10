@@ -22,4 +22,9 @@ public class TicketPoolController {
 //        return ticketPoolService.getAvailableTicket();
 //    }
 
+    @GetMapping("/logs")
+    public List<String> getLogs() {
+        return ticketPoolService.getLogs();
+    }
+
 }

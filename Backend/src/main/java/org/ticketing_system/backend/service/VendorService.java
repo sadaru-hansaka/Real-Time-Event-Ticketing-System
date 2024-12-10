@@ -8,7 +8,9 @@ import org.ticketing_system.backend.model.Vendor;
 import org.ticketing_system.backend.model.multithreading.VendorMultithreading;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -17,6 +19,8 @@ public class VendorService {
     private final Map<Integer, Vendor> vendors = new ConcurrentHashMap<>();
     private final Map<Integer, Thread>  vendorThreads = new ConcurrentHashMap<>();
     private int vendor_id = 1;
+
+    private final List<Integer> completedVendors = new ArrayList<>();
 
     @Autowired
     private TicketPoolService ticketPoolService;
@@ -56,7 +60,7 @@ public class VendorService {
             System.out.println("Vendor " + vendor_id + " not found");
             return;
         }
-        Thread vendorThread = new Thread(new VendorMultithreading(vendor,ticketPoolService,loggingService,vendor_id));
+        Thread vendorThread = new Thread(new VendorMultithreading(vendor,ticketPoolService,loggingService,vendor_id,this));
         vendorThreads.put(vendor_id, vendorThread);
         vendorThread.start();
     }
@@ -94,5 +98,13 @@ public class VendorService {
         }catch (IOException e){
             throw new RuntimeException("Load configuration failed");
         }
+    }
+
+    public void markCompletedVendors(int vendor_id){
+        completedVendors.add(vendor_id);
+    }
+
+    public List<Integer> returnCompletedVendors(){
+        return completedVendors;
     }
 }

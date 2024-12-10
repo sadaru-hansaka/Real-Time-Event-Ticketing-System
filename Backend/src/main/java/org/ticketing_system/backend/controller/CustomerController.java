@@ -39,6 +39,7 @@ public class CustomerController {
 //        return customerService.getTotal();
 //    }
 
+//    run all customer threads
     @PostMapping("Start")
     public String startCustomers() {
         Map<Integer, Customer> customers = customerService.getCustomers();
@@ -53,6 +54,21 @@ public class CustomerController {
     @GetMapping("/remain")
     public int remainTickets() {
         return customerService.getTotalAvailableTickets();
+    }
+
+
+//    run customer thread using customer id
+    @PostMapping("/{customer_id}/run")
+    public ResponseEntity<?> runCustomer(@PathVariable int customer_id) {
+        Customer customer = customerService.getCustomers().get(customer_id);
+
+        customerService.runCustomer(customer_id);
+        return ResponseEntity.ok("Customer " + customer_id);
+    }
+
+    @GetMapping("/completedThreads")
+    public List<Integer> getCompletedThreads() {
+        return customerService.returnCompletedThreads();
     }
 
 }

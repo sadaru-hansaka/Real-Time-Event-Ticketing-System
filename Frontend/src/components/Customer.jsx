@@ -14,6 +14,19 @@ const Customer = () => {
     const[remaintTickets,setRemainTickets]=useState(null);
     const[errors,setErrors]=useState({});
 
+    const [runningThreads, setRunningThreads] = useState([]);
+    const[completedThreads,setCompletedThreads]= useState([]);
+
+    useEffect(()=> {
+        const interval = setInterval(()=> {
+            fetch("http://localhost:8080/Customer/completedThreads")
+            .then((response)=>response.json())
+            .then((data) => setCompletedThreads(data))
+            .catch((error) => console.error("Error fetching next vendor ID:",error));
+        },400); //updates every 400 miliseconds
+        return () => clearInterval(interval);
+    },[]);
+
     // fetch customer's id from backend
     useEffect(()=> {
         const interval = setInterval(()=> {
@@ -66,7 +79,7 @@ const Customer = () => {
         if(!validateInputs()){
             return
         }
-        
+
         try{
             const response = await fetch("http://localhost:8080/Customer/create",{
                 method : "POST",
@@ -95,10 +108,10 @@ const Customer = () => {
     } 
 
     // start vendor Threads
-    const handleStart = async (e) => {
-        e.preventDefault();
+    const handleStart = async (customer_id) => {
+        console.log("Starting thread for customer:", customer_id); 
         try{
-            const response = await fetch("http://localhost:8080/Customer/Start",{
+            const response = await fetch(`http://localhost:8080/Customer/${customer_id}/run`,{
                 method: "POST",
                 headers: {
                 "Content-Type": "application/json",
@@ -107,7 +120,8 @@ const Customer = () => {
 
             if(response.ok){
                 const msg = await response.text();
-                console.log("Start");
+                console.log("MSG",msg);
+                setRunningThreads((prev) => [...prev, customer_id]);
             }else{
                 alert("Failed")
             }
@@ -122,7 +136,7 @@ const Customer = () => {
         const err = {};
 
         if(customerData.ticketCount>remaintTickets){
-            err.ticketCount = "Number of tickets can not exceed ";
+            err.ticketCount = `Number of tickets can not exceed ${remaintTickets}`;
         }
 
         setErrors(err);
@@ -167,6 +181,13 @@ const Customer = () => {
                                 <p>
                                     <strong>Name:</strong> {customer.name || "N/A"}
                                 </p>
+                                {completedThreads.includes(customer.customer_id) ? (
+                                    <span>Done</span> // Change button to text
+                                ) : runningThreads.includes(customer.customer_id)? (
+                                    <span>Thread Running ...</span>
+                                ):(
+                                    <button onClick={() => handleStart(customer.customer_id)}>Start</button>
+                                )}
                                 <hr />
                             </li>
                         ))}
@@ -174,7 +195,7 @@ const Customer = () => {
                 ) : (
                     <p>No customers available.</p>
                 )}
-                <button onClick={handleStart}>Start</button>
+               
             </div>
         </div>
     )
