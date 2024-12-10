@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.ticketing_system.backend.model.Customer;
+import org.ticketing_system.backend.model.Vendor;
 import org.ticketing_system.backend.service.CustomerService;
 
 import java.util.List;
@@ -32,11 +33,26 @@ public class CustomerController {
     public Map<Integer,Customer> getALLCustomers() {
         return customerService.getCustomers();
     }
-//    @PostMapping("/{customer_id}/run")
-//    public String runCustomer(@PathVariable int customer_id) {
-//        customerService.run(customer_id);
-//        return "Customer " + customer_id + " has been run!";
+
+//    @GetMapping("/totalTickets")
+//    public int getTotalTickets() {
+//        return customerService.getTotal();
 //    }
 
+    @PostMapping("Start")
+    public String startCustomers() {
+        Map<Integer, Customer> customers = customerService.getCustomers();
+
+        // Start a thread for each customer
+        for (Integer customerId : customers.keySet()) {
+            customerService.runCustomer(customerId);  // This will start a thread for each customer
+        }
+        return "Customers started.";
+    }
+
+    @GetMapping("/remain")
+    public int remainTickets() {
+        return customerService.getTotalAvailableTickets();
+    }
 
 }

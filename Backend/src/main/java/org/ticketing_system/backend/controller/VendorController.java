@@ -38,13 +38,19 @@ public class VendorController {
         return vendorService.getVendors();
     }
 
-//    @PostMapping("Start")
-//    public String startVendor() {
-//        Map<Integer,Vendor> vendors = vendorService.getVendors();
-//
-//        for (Integer vendor_id : vendors.keySet()) {
-//            vendorService.runVendor(vendor_id);
-//        }
-//        return "Vendors started.";
-//    }
+
+    @GetMapping("/NumberOfSlots")
+    public int getNumberOfSlots() {
+        return vendorService.getFreeSlots();
+    }
+
+    @PostMapping("Start")
+    public String startVendor() {
+        Map<Integer,Vendor> vendors = vendorService.getVendors();
+
+        for (Integer vendor_id : vendors.keySet()) {
+            vendorService.runVendor(vendor_id);
+        }
+        return "Vendors started.";
+    }
 }

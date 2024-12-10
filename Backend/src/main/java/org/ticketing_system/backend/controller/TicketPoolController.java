@@ -17,10 +17,9 @@ public class TicketPoolController {
     @Autowired
     private TicketPoolService ticketPoolService;
 
-//    @GetMapping("/status")
-//    public List<Integer> viewTickets() {
-//        return ticketPoolService.getTickets();
+//    @GetMapping("/available")
+//    public int availableTickets() {
+//        return ticketPoolService.getAvailableTicket();
 //    }
-
 
 }

@@ -11,6 +11,8 @@ const Customer = () => {
     const [nextId,setNextId]=useState(null);
     // get customer's data from backend to display in frontend
     const[customers,setCustomers]=useState([]);
+    const[remaintTickets,setRemainTickets]=useState(null);
+    const[errors,setErrors]=useState({});
 
     // fetch customer's id from backend
     useEffect(()=> {
@@ -22,6 +24,18 @@ const Customer = () => {
         },200); //updates every 200 miliseconds
         return () => clearInterval(interval);
     },[]);
+
+    // get the remain ticket count to buy
+    useEffect(()=> {
+        const interval = setInterval(()=> {
+            fetch("http://localhost:8080/Customer/remain")
+            .then((response)=>response.json())
+            .then((data) => setRemainTickets(data))
+            .catch((error) => console.error("Error fetching next vendor ID:",error));
+        },200);
+        return () => clearInterval(interval);
+    },[]);
+
 
     // catch user's input and save them to an list
     const saveCustomerChanges = (e) => {
@@ -48,6 +62,11 @@ const Customer = () => {
     // submit user's data to backend to make threads
     const submit = async (e) => {
         e.preventDefault();
+
+        if(!validateInputs()){
+            return
+        }
+        
         try{
             const response = await fetch("http://localhost:8080/Customer/create",{
                 method : "POST",
@@ -73,13 +92,50 @@ const Customer = () => {
         }catch(error){
             console.error("Error",error)
         }
-
     } 
+
+    // start vendor Threads
+    const handleStart = async (e) => {
+        e.preventDefault();
+        try{
+            const response = await fetch("http://localhost:8080/Customer/Start",{
+                method: "POST",
+                headers: {
+                "Content-Type": "application/json",
+                },
+            });
+
+            if(response.ok){
+                const msg = await response.text();
+                console.log("Start");
+            }else{
+                alert("Failed")
+            }
+        }catch (error){
+            console.error("Error starting threads.",error)
+        }
+    }
+
+
+    // validate inputs
+    const validateInputs=()=>{
+        const err = {};
+
+        if(customerData.ticketCount>remaintTickets){
+            err.ticketCount = "Number of tickets can not exceed ";
+        }
+
+        setErrors(err);
+
+        return Object.keys(err).length==0
+    }
+
 
     return(
         <div className="flex flex-row">
             <div className="w-[400px]  p-4 border-2 border-black px-5 py-2 rounded-lg bg-slate-300">
                 <h1>Enter customer data : </h1>
+                <p>Remain Tickets : {remaintTickets}</p>
                 <form className="flex flex-col" onSubmit={submit}>
                     <label>Customer ID : {nextId}</label>
                     <label>Enter your name : </label>
@@ -87,6 +143,7 @@ const Customer = () => {
 
                     <label>How many tickets do you need to buy : </label>
                     <input type="number" min={0} name="ticketCount" value={setCustomerData.ticketCount} onChange={saveCustomerChanges}/>
+                    {errors.ticketCount && <p className="text-red-500">{errors.ticketCount}</p>}
 
                     <div className="flex items-end justify-end">
                         <button type="submit" className="flex m-2 p-4 border-2 border-black px-4 py-2 rounded-lg">Add Customer</button>
@@ -117,6 +174,7 @@ const Customer = () => {
                 ) : (
                     <p>No customers available.</p>
                 )}
+                <button onClick={handleStart}>Start</button>
             </div>
         </div>
     )

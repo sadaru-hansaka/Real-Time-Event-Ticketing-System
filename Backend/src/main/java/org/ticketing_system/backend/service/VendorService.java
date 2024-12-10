@@ -27,9 +27,16 @@ public class VendorService {
     @Autowired
     private LoggingService loggingService;
 
+//    create vendors using numOfTickets and ticketsPerRelease
     public Vendor createVendor(int ticketsPerRelease, int numOfTickets) {
         try{
             Configuration configuration = configurationService.getData();
+            int totalTickets = configuration.getTotalTickets();
+
+            if(numOfTickets > totalTickets){
+                throw new IllegalArgumentException("Number of tickets must be less than total tickets");
+            }
+
             int releaseInterval =configuration.getTicketReleaseRate();
             Vendor vendor = new Vendor(vendor_id, ticketsPerRelease, releaseInterval, numOfTickets);
             vendors.put(vendor_id, vendor);
@@ -42,6 +49,7 @@ public class VendorService {
 
     }
 
+//    run vendor threads
     public void runVendor(int vendor_id) {
         Vendor vendor = vendors.get(vendor_id);
         if (vendor == null) {
@@ -61,11 +69,30 @@ public class VendorService {
         vendorThreads.clear();
     }
 
+//    returns all created vendors
     public Map<Integer,Vendor> getVendors() {
         return vendors;
     }
 
+//    returen next vendor's id to frontend
     public int getNextID(){
         return vendor_id;
+    }
+
+//    return total of vendor issued tickets
+    public int issued(){
+        return vendors.values().stream().mapToInt(Vendor::getNumOfTickets).sum();
+    }
+
+//calculate the number of tickets vendors can further add
+    public int getFreeSlots(){
+        try{
+            Configuration configuration = configurationService.getData();
+            int total = configuration.getTotalTickets();
+            int sumResult = vendors.values().stream().mapToInt(Vendor::getNumOfTickets).sum();
+            return total-sumResult;
+        }catch (IOException e){
+            throw new RuntimeException("Load configuration failed");
+        }
     }
 }

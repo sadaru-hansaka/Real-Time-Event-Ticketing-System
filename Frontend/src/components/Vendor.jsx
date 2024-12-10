@@ -10,6 +10,9 @@ const Vendor = () => {
     const[nextId,setNextID] = useState(null);
     const[vendor,setVendor]=useState([]);
 
+    const[errors,setErrors]=useState({});
+    const[reaminSlots,setRemainSlots]=useState(null)
+
     useEffect(()=> {
         const interval = setInterval(()=> {
             fetch("http://localhost:8080/Vendor/nextID")
@@ -20,6 +23,20 @@ const Vendor = () => {
         return () => clearInterval(interval);
     },[]);
 
+// get the number of free slots which vendors can issue tickets
+    useEffect(()=> {
+        const interval = setInterval(()=> {
+            fetch("http://localhost:8080/Vendor/NumberOfSlots")
+            .then((response)=>response.json())
+            .then((data) => setRemainSlots(data))
+            .catch((error) => console.error("Error fetching next vendor ID:",error));
+        },200);
+        return () => clearInterval(interval);
+    },[]);
+
+
+
+    // get all created vendor's data
     useEffect(()=>{
         const fetchVendors = async () => {
             try{
@@ -35,14 +52,20 @@ const Vendor = () => {
         fetchVendors();
     });
 
-
+// save vendor's data
     const saveChanges = (e) => {
         const {name,value} = e.target;
         setVendorData({...vendorData,[name]: Number(value)});
     }
 
+    // submit the form data to backend
     const submit = async (e) => {
         e.preventDefault();
+
+        if(!validateInputs()){
+            return
+        }
+
         try{
             const response = await fetch("http://localhost:8080/Vendor/create",{
                 method : "POST",
@@ -68,15 +91,52 @@ const Vendor = () => {
                 setResponseMessage(`Error: ${errorData.message || "Unknown error"}`)
             }
         }catch(error){
-            console.error("Error")
+            console.error("Error",error)
         }
 
     } 
+
+// validate inputs
+    const validateInputs=()=>{
+        const err = {};
+
+        if(vendorData.numOfTickets>reaminSlots){
+            err.numOfTickets = "Number of tickets can not exceed ";
+        }
+
+        setErrors(err);
+
+        return Object.keys(err).length==0
+    }
+
+
+    // start vendor threads
+    const handleStart = async (e) => {
+        e.preventDefault();
+        try{
+            const response = await fetch("http://localhost:8080/Vendor/Start",{
+                method: "POST",
+                headers: {
+                "Content-Type": "application/json",
+                },
+            });
+
+            if(response.ok){
+                const msg = await response.text();
+                console.log("Start");
+            }else{
+                alert("Failed")
+            }
+        }catch (error){
+            console.error("Error starting threads.",error)
+        }
+    }
 
     return(
         <div className="flex flex-row">
             <div className="w-[400px]  p-4 border-2 border-black px-5 py-2 rounded-lg bg-slate-300">
                 <h1>Enter Vendor Detaisl :</h1>
+                <p>Free Slots : {reaminSlots}</p>
                 <form className="flex flex-col" onSubmit={submit}>
                     <label>Vendor ID: {nextId}</label>
                 
@@ -85,6 +145,7 @@ const Vendor = () => {
 
                     <label>Number of Tickets : </label>
                     <input type="number" min={0} name="numOfTickets" value={setVendorData.numOfTickets} onChange={saveChanges}/>
+                    {errors.numOfTickets && <p className="text-red-500">{errors.numOfTickets}</p>}
 
                     <div className="flex items-end justify-end">
                         <button type="submit" className="flex m-2 p-4 border-2 border-black px-4 py-2 rounded-lg">Add Vendor</button>
@@ -109,6 +170,7 @@ const Vendor = () => {
                         ))}
                     </ul>
                 )}
+                <button onClick={handleStart}>Start</button>
             </div>
         </div>
     );
