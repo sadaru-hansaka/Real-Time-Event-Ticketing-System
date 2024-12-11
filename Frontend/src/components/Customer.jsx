@@ -148,14 +148,17 @@ const Customer = () => {
     return(
         <div className="flex flex-row">
             <div className="w-[400px]  p-4 border-2 border-black px-5 py-2 rounded-lg bg-slate-300">
-                <h1>Enter customer data : </h1>
-                <p>Remain Tickets : {remaintTickets}</p>
+                <h1 className="text-xl font-semibold">Enter customer data : </h1><br></br>
+                <div className="mb-[10px] p-1 bg-red-300">
+                    <p className="font-medium">Remain Tickets : {remaintTickets}</p>
+                </div>
+                
                 <form className="flex flex-col" onSubmit={submit}>
                     <label>Customer ID : {nextId}</label>
-                    <label>Enter your name : </label>
+                    <label className="mb-[10px]">Enter your name : </label>
                     <input type="text" min={0}/>
 
-                    <label>How many tickets do you need to buy : </label>
+                    <label className="mb-[10px]">How many tickets do you need to buy : </label>
                     <input type="number" min={0} name="ticketCount" value={setCustomerData.ticketCount} onChange={saveCustomerChanges}/>
                     {errors.ticketCount && <p className="text-red-500">{errors.ticketCount}</p>}
 
@@ -167,27 +170,26 @@ const Customer = () => {
             </div>
             {/* display added cutomers */}
             <div className="w-[400px] p-4 border-2 border-black px-5 py-2 rounded-lg bg-slate-300">
-                <h1>Customer Threads :</h1>
+                <h1 className="text-xl font-semibold" >Customer Threads :</h1><br></br>
                 {customers && customers.length > 0 ? (
                     <ul>
                         {customers.map((customer, index) => (
                             <li key={index}>
                                 <p>
-                                    <strong>ID:</strong> {customer.customer_id}
+                                    <strong>Customer  {customer.customer_id}</strong>
                                 </p>
                                 <p>
-                                    <strong>Tickets:</strong> {customer.ticketCount}
+                                    <strong>Number of Tickets: {customer.ticketCount}</strong> 
                                 </p>
-                                <p>
-                                    <strong>Name:</strong> {customer.name || "N/A"}
-                                </p>
-                                {completedThreads.includes(customer.customer_id) ? (
-                                    <span>Done</span> // Change button to text
-                                ) : runningThreads.includes(customer.customer_id)? (
-                                    <span>Thread Running ...</span>
-                                ):(
-                                    <button onClick={() => handleStart(customer.customer_id)}>Start</button>
-                                )}
+                                <div className="flex items-end justify-end">
+                                    {completedThreads.includes(customer.customer_id) ? (
+                                        <span>Done !</span> // Change button to text
+                                    ) : runningThreads.includes(customer.customer_id)? (
+                                        <span>Thread Running ...</span>
+                                    ):(
+                                        <button className="flex m-1 border-2 border-black px-2 py-0 rounded-lg" onClick={() => handleStart(customer.customer_id)}>Start</button>
+                                    )}
+                                </div>
                                 <hr />
                             </li>
                         ))}

@@ -173,15 +173,18 @@ const Vendor = () => {
     return(
         <div className="flex flex-row">
             <div className="w-[400px]  p-4 border-2 border-black px-5 py-2 rounded-lg bg-slate-300">
-                <h1>Enter Vendor Detaisl :</h1>
-                <p>Free Slots : {reaminSlots}</p>
+                <h1 className="text-xl font-semibold">Enter Vendor Detaisl :</h1><br></br>
+                <div className="mb-[10px] p-1 bg-red-300">
+                    <p className="font-medium">Free Slots : {reaminSlots}</p>
+                </div>
+                
                 <form className="flex flex-col" onSubmit={submit}>
                     <label>Vendor ID: {nextId}</label>
                 
-                    <label>Tickets Per Release : </label>
+                    <label className="mb-[10px]">Tickets Per Release : </label>
                     <input type="number" min={0} name="ticketsPerRelease" value={setVendorData.ticketsPerRelease} onChange={saveChanges}/>
 
-                    <label>Number of Tickets : </label>
+                    <label className="mb-[10px]">Number of Tickets : </label>
                     <input type="number" min={0} name="numOfTickets" value={setVendorData.numOfTickets} onChange={saveChanges}/>
                     {errors.numOfTickets && <p className="text-red-500">{errors.numOfTickets}</p>}
 
@@ -193,30 +196,34 @@ const Vendor = () => {
                 
             </div>
             <div className="w-[400px] p-4 border-2 border-black px-5 py-2 rounded-lg bg-slate-300">
-                <h1>Vendor Threads : </h1>
+                <h1 className="text-xl font-semibold">Vendor Threads : </h1><br></br>
                 {vendor.length === 0 ? (
                     <p>No vendors added yet.</p>
                 ) : (
                     <ul>
                         {vendor.map((vendor) => (
                             <li key={vendor.vendor_id}>
-                                <p>Vendor ID: {vendor.vendor_id}</p>
-                                <p>Tickets Per Release: {vendor.ticketsPerRelease}</p>
-                                <p>Number of Tickets: {vendor.numOfTickets}</p>
-                                {completedVendors.includes(vendor.vendor_id)?(
-                                    <span>Done</span>
-                                ): runningVendors.includes(vendor.vendor_id)?(
-                                    <span>Thread Running ...</span>
-                                ):(
-                                    <button onClick={() => runVendor(vendor.vendor_id)}>Start</button>
-                                )}
+                                <p><strong>Vendor {vendor.vendor_id}</strong></p>
+                                <p><strong>Tickets Per Release: {vendor.ticketsPerRelease}</strong></p>
+                                <p><strong>Number of Tickets: {vendor.numOfTickets}</strong></p>
+                                <div className="flex items-end justify-end">
+                                    {completedVendors.includes(vendor.vendor_id)?(
+                                        <span>Done !</span>
+                                    ): runningVendors.includes(vendor.vendor_id)?(
+                                        <span>Thread Running ...</span>
+                                    ):(
+                                        <button className="flex m-1 border-2 border-black px-2 py-0 rounded-lg" onClick={() => runVendor(vendor.vendor_id)}>Start</button>
+                                    )}
+                                </div>
                                 <hr/>
                             </li>
                         ))}
                         
                     </ul>
                 )}
-                <button onClick={handleStart}>Run All Vendors</button>
+                <div className="flex justify-center items-baseline">
+                    <button  className="flex m-2 p-3 border-2 border-black px-3 py-1 rounded-lg" onClick={handleStart}>Run All Vendors</button>
+                </div>
             </div>
         </div>
     );

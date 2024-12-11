@@ -6,6 +6,7 @@ import Vendor from './components/Vendor';
 import SystemLogs from './components/SystemLogs';
 import Customer from './components/Customer'
 import ControlPanel from './components/ControlPanel';
+import ProgressBar from './components/ProgressBar';
 
 function App() {
 
@@ -19,9 +20,10 @@ function App() {
               <Route path='/' element={<Configuration/>}/>
               <Route path='/vendor' element={<Vendor/>}/>
               <Route path='/customer' element={<Customer/>}/>
+              <Route path='/progress' element={<ProgressBar/>}/>
             </Routes>
           </div>
-          <ControlPanel/>
+          {/* <ControlPanel/> */}
         </div>
         <div className='w-1/4 bg-slate-400'>
           <SystemLogs/>

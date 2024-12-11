@@ -40,4 +40,24 @@ public class ConfigurationController {
             throw new RuntimeException(e);
         }
     }
+
+    @GetMapping("display")
+    public Configuration getConfiguration() {
+        try {
+            return configurationService.getData();
+        } catch (IOException e) {
+            e.printStackTrace();
+            return null; // Handle errors appropriately in production
+        }
+    }
+
+    @GetMapping("/max")
+    public int getMaxConfiguration() {
+        try{
+            return configurationService.getData().getMaxTicketCapacity();
+        }catch (IOException e){
+            e.printStackTrace();
+            return 0;
+        }
+    }
 }

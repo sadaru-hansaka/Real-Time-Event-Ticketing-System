@@ -46,9 +46,9 @@ const ControlPanel = () => {
     }
 
     return(
-        <div className="flex flex-row justify-center gap-10 mb-20">
-            <button onClick={handleStart}>Start</button>
-            <button onClick={handleStop}>Stop</button>
+        <div className="flex flex-row justify-center gap-5 mb-20">
+            <button className="flex text-[20px] font-medium m-1 px-5 py-2 border-2 border-black rounded-lg" onClick={handleStart}>Start</button>
+            <button className="flex text-[20px] font-medium m-1 px-5 py-2 border-2 border-black rounded-lg" onClick={handleStop}>Stop</button>
         </div>
     );
 }

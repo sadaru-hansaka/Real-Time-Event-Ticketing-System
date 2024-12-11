@@ -107,8 +107,8 @@ public class TicketPoolService {
     }
 
 //    returns available ticket count in the ticketpool
-//    public int getAvailableTicket(){
-//        return availableTicket;
-//    }
+    public int getAvailableTicket(){
+        return availableTicket;
+    }
 
 }
