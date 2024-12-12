@@ -2,6 +2,7 @@ package org.ticketing_system;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 
@@ -21,49 +22,75 @@ public class Main {
         int customerId = 1;
 
 //        get inputs
-        while (true) {
-            System.out.print("Enter Max Number of Tickets: ");
-            int max = scanner.nextInt();
-            if (max < 0) {
-                System.out.println("Max Number of Tickets must be a positive number. Enter again.");
-                continue;
-            }
-            config.setmaxTicketCapacity(max);
-            break;
-        }
 
         while (true) {
             System.out.print("Enter total number of Tickets: ");
-            int total = scanner.nextInt();
-            if (total < 0 ) {
+            try{
+                int total = scanner.nextInt();
+                if (total < 0 ) {
+                    System.out.println("Total number of Tickets must be a positive number. Enter again.");
+                    continue;
+                }
+                config.setTotalTickets(total);
+                break;
+            }catch (InputMismatchException e){
                 System.out.println("Total number of Tickets must be a positive number. Enter again.");
-                continue;
+                scanner.next();
             }
-            config.setTotalTickets(total);
-            break;
+
         }
 
         while (true) {
-            System.out.print("Enter Ticket Release Rate: ");
-            int release = scanner.nextInt();
-            if (release < 0) {
-                System.out.println("Ticket release rate must be a positive number. Enter again.");
-                continue;
+            System.out.print("Enter Max Number of Tickets: ");
+            try{
+                int max = scanner.nextInt();
+                if (max < 0) {
+                    System.out.println("Max Number of Tickets must be a positive number. Enter again.");
+                    continue;
+                }
+                config.setmaxTicketCapacity(max);
+                break;
+            }catch (InputMismatchException e){
+                System.out.println("Max number of tickets must be a positive number. Enter again.");
+                scanner.next();
             }
-            config.setTicketReleaseRate(release);
-            break;
+        }
+
+
+
+        while (true) {
+            System.out.print("Enter Ticket Release Rate: ");
+            try{
+                int release = scanner.nextInt();
+                if (release < 0) {
+                    System.out.println("Ticket release rate must be a positive number. Enter again.");
+                    continue;
+                }
+                config.setTicketReleaseRate(release);
+                break;
+            }catch (InputMismatchException e){
+                System.out.println("Ticket release rate must be a positive number. Enter again.");
+                scanner.next();
+            }
+
         }
 
         while (true) {
             System.out.print("Enter Customer Retrieval Rate: ");
-            int retrieval = scanner.nextInt();
-            scanner.nextLine();
-            if (retrieval < 0) {
+            try{
+                int retrieval = scanner.nextInt();
+                scanner.nextLine();
+                if (retrieval < 0) {
+                    System.out.println("Customer retrieval rate must be a positive number. Enter again.");
+                    continue;
+                }
+                config.setCustomerRetrievalRate(retrieval);
+                break;
+            }catch (InputMismatchException e){
                 System.out.println("Customer retrieval rate must be a positive number. Enter again.");
-                continue;
+                scanner.next();
             }
-            config.setCustomerRetrievalRate(retrieval);
-            break;
+
         }
 
 

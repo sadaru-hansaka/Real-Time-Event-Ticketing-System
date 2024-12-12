@@ -5,6 +5,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.ticketing_system.backend.model.Configuration;
 import org.ticketing_system.backend.service.ConfigurationService;
+import org.ticketing_system.backend.service.LoggingService;
 
 import java.io.IOException;
 
@@ -16,6 +17,9 @@ public class ConfigurationController {
     @Autowired
     private ConfigurationService configurationService;
 
+    @Autowired
+    private LoggingService loggingService;
+
     public ConfigurationController(ConfigurationService configurationService) {
         this.configurationService = configurationService;
     }
@@ -24,6 +28,7 @@ public class ConfigurationController {
     public ResponseEntity<Configuration> save(@RequestBody Configuration configuration) {
         try{
             configurationService.saveParameters(configuration);
+            loggingService.log("Configuration Saved");
             return ResponseEntity.ok(configuration);
         }catch (IOException e) {
             throw new RuntimeException(e);

@@ -29,6 +29,7 @@ public class TicketPool {
 
 //    adding tickets to the ticket pool
     public synchronized boolean addTickets(int count,int vendor) throws InterruptedException {
+//        checks the ticketPool capacity
         if (ticketID > totalTicket) {
             String maxMsg = "\nMaximum capacity reached! No more tickets can be added.";
             System.out.println(maxMsg);
@@ -36,6 +37,7 @@ public class TicketPool {
             return false;
         }
         for (int i = 1; i <= count; i++) {
+//            waiting for free up ticketpool space
             while (availableTicket >= maxTicket) {
                 String waitingmsg = "\nWaiting for customers to buy available ticket\n";
                 System.out.println(waitingmsg);

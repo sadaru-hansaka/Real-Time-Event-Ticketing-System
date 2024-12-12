@@ -38,7 +38,9 @@ public class VendorService {
             int totalTickets = configuration.getTotalTickets();
 
             if(numOfTickets > totalTickets){
-                throw new IllegalArgumentException("Number of tickets must be less than total tickets");
+                String error1 = "Number of tickets must be less than total tickets";
+                loggingService.log(error1);
+                throw new IllegalArgumentException(error1);
             }
 
             int releaseInterval =configuration.getTicketReleaseRate();
@@ -48,7 +50,9 @@ public class VendorService {
             return vendor;
         }catch (IOException e){
             e.printStackTrace();
-            throw new RuntimeException("Load configuration failed");
+            String error2 = "Load configuration failed";
+            loggingService.log(error2);
+            throw new RuntimeException(error2);
         }
 
     }
@@ -57,7 +61,9 @@ public class VendorService {
     public void runVendor(int vendor_id) {
         Vendor vendor = vendors.get(vendor_id);
         if (vendor == null) {
-            System.out.println("Vendor " + vendor_id + " not found");
+            String notFound = "Vendor " + vendor_id + " not found";
+            loggingService.log(notFound);
+            System.out.println(notFound);
             return;
         }
         Thread vendorThread = new Thread(new VendorMultithreading(vendor,ticketPoolService,loggingService,vendor_id,this));

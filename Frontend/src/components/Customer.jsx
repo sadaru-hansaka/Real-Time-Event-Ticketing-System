@@ -97,7 +97,10 @@ const Customer = () => {
                 const updateCustomers = await customersResponse.json();
                 const customerArray = Object.values(updateCustomers)
                 setCustomers(customerArray);
-                alert("Done");
+                setCustomerData({
+                    name: "",
+                    ticketCount:0,
+                });
             }else{
                 const errorData = await response.json();
                 setResponseMessage(`Error: ${errorData.message || "Unknown error"}`)

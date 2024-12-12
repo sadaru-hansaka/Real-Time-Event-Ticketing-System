@@ -5,7 +5,6 @@ import NavBar from './components/NavBar'
 import Vendor from './components/Vendor';
 import SystemLogs from './components/SystemLogs';
 import Customer from './components/Customer'
-import ControlPanel from './components/ControlPanel';
 import ProgressBar from './components/ProgressBar';
 
 function App() {

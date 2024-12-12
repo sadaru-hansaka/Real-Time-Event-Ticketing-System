@@ -5,6 +5,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.ticketing_system.backend.model.Customer;
 import org.ticketing_system.backend.model.Vendor;
+import org.ticketing_system.backend.service.LoggingService;
 import org.ticketing_system.backend.service.VendorService;
 
 import java.util.List;
@@ -16,6 +17,9 @@ import java.util.Map;
 public class VendorController {
     @Autowired
     private VendorService vendorService;
+
+    @Autowired
+    private LoggingService loggingService;
 
     @PostMapping("/create")
     public Vendor createVendor(@RequestBody Map<String,Integer> vendorData) {
@@ -48,6 +52,7 @@ public class VendorController {
         for (Integer vendor_id : vendors.keySet()) {
             vendorService.runVendor(vendor_id);
         }
+        loggingService.log("All vendors started");
         return "Vendors started.";
     }
 
@@ -57,7 +62,8 @@ public class VendorController {
         Vendor vendor = vendorService.getVendors().get(vendor_id);
 
         vendorService.runVendor(vendor_id);
-        return ResponseEntity.ok("Customer " + vendor_id);
+        loggingService.log("vendor "+vendor_id+" running");
+        return ResponseEntity.ok("Vendor " + vendor_id);
     }
 
     @GetMapping("/completedVendors")

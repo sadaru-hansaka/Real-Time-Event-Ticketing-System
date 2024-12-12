@@ -1,270 +1,81 @@
-[2024-12-11 19:06:08] Vendor 1 added ticket : 1
-[2024-12-11 19:06:08] Vendor 1 added ticket : 2
-[2024-12-11 19:06:08] Vendor 1 added ticket : 3
-[2024-12-11 19:06:08] Vendor 1 added ticket : 4
-[2024-12-11 19:06:08] Vendor 1 added ticket : 5
-[2024-12-11 19:06:08] Vendor 1 added ticket : 6
-[2024-12-11 19:06:08] Vendor 1 added ticket : 7
-[2024-12-11 19:06:08] Vendor 1 added ticket : 8
-[2024-12-11 19:06:08] Vendor 1 added ticket : 9
-[2024-12-11 19:06:08] Vendor 1 added ticket : 10
-[2024-12-11 19:06:08] Vendor 1 added ticket : 11
-[2024-12-11 19:06:08] Vendor 1 added ticket : 12
-[2024-12-11 19:06:08] Customer 2 purchased ticket : 1
-[2024-12-11 19:06:08] Customer 1 purchased ticket : 2
-[2024-12-11 19:06:08] Vendor 2 added ticket : 13
-[2024-12-11 19:06:08] Vendor 2 added ticket : 14
-[2024-12-11 19:06:08] Vendor 2 added ticket : 15
-[2024-12-11 19:06:08] Vendor 2 added ticket : 16
-[2024-12-11 19:06:08] Vendor 2 added ticket : 17
-[2024-12-11 19:06:08] Vendor 2 added ticket : 18
-[2024-12-11 19:06:08] Vendor 2 added ticket : 19
-[2024-12-11 19:06:08] Vendor 2 added ticket : 20
-[2024-12-11 19:06:08] Vendor 2 added ticket : 21
-[2024-12-11 19:06:08] Vendor 2 added ticket : 22
-[2024-12-11 19:06:08] Vendor 2 added ticket : 23
-[2024-12-11 19:06:08] Vendor 2 added ticket : 24
-[2024-12-11 19:06:08] Vendor 2 added ticket : 25
-[2024-12-11 19:06:08] Vendor 2 added ticket : 26
-[2024-12-11 19:06:08] Vendor 2 added ticket : 27
-[2024-12-11 19:06:09] Customer 2 purchased ticket : 3
-[2024-12-11 19:06:09] Customer 1 purchased ticket : 4
-[2024-12-11 19:06:09] Vendor 1 added ticket : 28
-[2024-12-11 19:06:09] Vendor 1 added ticket : 29
-[2024-12-11 19:06:09] Vendor 1 added ticket : 30
-[2024-12-11 19:06:09] Vendor 1 added ticket : 31
-[2024-12-11 19:06:09] Vendor 1 added ticket : 32
-[2024-12-11 19:06:09] Vendor 1 added ticket : 33
-[2024-12-11 19:06:09] Vendor 1 added ticket : 34
-[2024-12-11 19:06:09] Vendor 1 added ticket : 35
-[2024-12-11 19:06:09] Vendor 1 added ticket : 36
-[2024-12-11 19:06:09] Vendor 1 added ticket : 37
-[2024-12-11 19:06:09] Vendor 1 added ticket : 38
-[2024-12-11 19:06:09] Vendor 1 added ticket : 39
-[2024-12-11 19:06:09] Vendor 2 added ticket : 40
-[2024-12-11 19:06:09] Vendor 2 added ticket : 41
-[2024-12-11 19:06:09] Vendor 2 added ticket : 42
-[2024-12-11 19:06:09] Vendor 2 added ticket : 43
-[2024-12-11 19:06:09] Vendor 2 added ticket : 44
-[2024-12-11 19:06:09] Vendor 2 added ticket : 45
-[2024-12-11 19:06:09] Vendor 2 added ticket : 46
-[2024-12-11 19:06:09] Vendor 2 added ticket : 47
-[2024-12-11 19:06:09] Vendor 2 added ticket : 48
-[2024-12-11 19:06:09] Vendor 2 added ticket : 49
-[2024-12-11 19:06:09] Vendor 2 added ticket : 50
-[2024-12-11 19:06:09] Vendor 2 added ticket : 51
-[2024-12-11 19:06:09] Vendor 2 added ticket : 52
-[2024-12-11 19:06:09] Vendor 2 added ticket : 53
-[2024-12-11 19:06:09] Vendor 2 added ticket : 54
-[2024-12-11 19:06:10] Customer 2 purchased ticket : 5
-[2024-12-11 19:06:10] Customer 1 purchased ticket : 6
-[2024-12-11 19:06:10] Vendor 2 added ticket : 55
-[2024-12-11 19:06:10] Vendor 2 added ticket : 56
-[2024-12-11 19:06:10] 
+[2024-12-12 10:37:22] Configuration saved
+[2024-12-12 10:37:22] Configuration Saved
+[2024-12-12 10:37:49] Customer created with 12 tickets
+[2024-12-12 10:37:53] Vendor 1 added ticket : 1
+[2024-12-12 10:37:53] Vendor 1 added ticket : 2
+[2024-12-12 10:37:53] Vendor 1 added ticket : 3
+[2024-12-12 10:37:53] Vendor 1 added ticket : 4
+[2024-12-12 10:37:53] Vendor 1 added ticket : 5
+[2024-12-12 10:37:53] Vendor 2 added ticket : 6
+[2024-12-12 10:37:53] Vendor 2 added ticket : 7
+[2024-12-12 10:37:53] Vendor 2 added ticket : 8
+[2024-12-12 10:37:53] Vendor 2 added ticket : 9
+[2024-12-12 10:37:53] Vendor 2 added ticket : 10
+[2024-12-12 10:37:53] All customers and Vendors are now running in separate threads.
+[2024-12-12 10:37:53] Customer 1 purchased ticket : 1
+[2024-12-12 10:37:53] Customer 1 purchased ticket : 2
+[2024-12-12 10:37:53] Vendor 1 added ticket : 11
+[2024-12-12 10:37:53] Vendor 1 added ticket : 12
+[2024-12-12 10:37:53] 
 Ticket Pool reached maximum capacity.
-[2024-12-11 19:06:10] 
+[2024-12-12 10:37:53] 
 Ticket Pool reached maximum capacity.
-[2024-12-11 19:06:11] Customer 2 purchased ticket : 7
-[2024-12-11 19:06:11] Vendor 2 added ticket : 57
-[2024-12-11 19:06:11] 
+[2024-12-12 10:37:53] Customer 1 purchased ticket : 3
+[2024-12-12 10:37:53] Vendor 1 added ticket : 13
+[2024-12-12 10:37:53] 
 Ticket Pool reached maximum capacity.
-[2024-12-11 19:06:11] 
+[2024-12-12 10:37:53] 
 Ticket Pool reached maximum capacity.
-[2024-12-11 19:06:11] Customer 1 purchased ticket : 8
-[2024-12-11 19:06:11] Vendor 2 added ticket : 58
-[2024-12-11 19:06:11] 
+[2024-12-12 10:37:53] Customer 1 purchased ticket : 4
+[2024-12-12 10:37:53] Vendor 1 added ticket : 14
+[2024-12-12 10:37:53] 
 Ticket Pool reached maximum capacity.
-[2024-12-11 19:06:11] 
+[2024-12-12 10:37:53] 
 Ticket Pool reached maximum capacity.
-[2024-12-11 19:06:12] Customer 2 purchased ticket : 9
-[2024-12-11 19:06:12] Vendor 2 added ticket : 59
-[2024-12-11 19:06:12] 
+[2024-12-12 10:37:53] Customer 1 purchased ticket : 5
+[2024-12-12 10:37:53] Vendor 1 added ticket : 15
+[2024-12-12 10:37:53] 
 Ticket Pool reached maximum capacity.
-[2024-12-11 19:06:12] 
+[2024-12-12 10:37:53] Customer 1 purchased ticket : 6
+[2024-12-12 10:37:53] Vendor 2 added ticket : 16
+[2024-12-12 10:37:53] 
 Ticket Pool reached maximum capacity.
-[2024-12-11 19:06:12] Customer 1 purchased ticket : 10
-[2024-12-11 19:06:12] Vendor 2 added ticket : 60
-[2024-12-11 19:06:12] 
+[2024-12-12 10:37:53] Vendor 1 has stopped issuing tickets.
+[2024-12-12 10:37:54] Customer 1 purchased ticket : 7
+[2024-12-12 10:37:54] Vendor 2 added ticket : 17
+[2024-12-12 10:37:54] 
 Ticket Pool reached maximum capacity.
-[2024-12-11 19:06:12] 
+[2024-12-12 10:37:54] Customer 1 purchased ticket : 8
+[2024-12-12 10:37:54] Vendor 2 added ticket : 18
+[2024-12-12 10:37:54] 
 Ticket Pool reached maximum capacity.
-[2024-12-11 19:06:13] Customer 1 purchased ticket : 11
-[2024-12-11 19:06:13] Vendor 2 added ticket : 61
-[2024-12-11 19:06:13] 
+[2024-12-12 10:37:54] Customer 1 purchased ticket : 9
+[2024-12-12 10:37:54] Vendor 2 added ticket : 19
+[2024-12-12 10:37:54] 
 Ticket Pool reached maximum capacity.
-[2024-12-11 19:06:13] 
-Ticket Pool reached maximum capacity.
-[2024-12-11 19:06:13] Customer 2 purchased ticket : 12
-[2024-12-11 19:06:13] Vendor 2 added ticket : 62
-[2024-12-11 19:06:13] 
-Ticket Pool reached maximum capacity.
-[2024-12-11 19:06:13] 
-Ticket Pool reached maximum capacity.
-[2024-12-11 19:06:14] Customer 1 purchased ticket : 13
-[2024-12-11 19:06:14] Vendor 2 added ticket : 63
-[2024-12-11 19:06:14] 
-Ticket Pool reached maximum capacity.
-[2024-12-11 19:06:14] 
-Ticket Pool reached maximum capacity.
-[2024-12-11 19:06:14] Customer 2 purchased ticket : 14
-[2024-12-11 19:06:14] Vendor 2 added ticket : 64
-[2024-12-11 19:06:14] 
-Ticket Pool reached maximum capacity.
-[2024-12-11 19:06:15] Customer 2 purchased ticket : 15
-[2024-12-11 19:06:15] Vendor 1 added ticket : 65
-[2024-12-11 19:06:15] 
-Ticket Pool reached maximum capacity.
-[2024-12-11 19:06:15] Customer 1 purchased ticket : 16
-[2024-12-11 19:06:15] Vendor 1 added ticket : 66
-[2024-12-11 19:06:15] 
-Ticket Pool reached maximum capacity.
-[2024-12-11 19:06:15] Vendor 2 has stopped issuing tickets.
-[2024-12-11 19:06:16] Customer 2 purchased ticket : 17
-[2024-12-11 19:06:16] Vendor 1 added ticket : 67
-[2024-12-11 19:06:16] 
-Ticket Pool reached maximum capacity.
-[2024-12-11 19:06:16] Customer 1 purchased ticket : 18
-[2024-12-11 19:06:16] Vendor 1 added ticket : 68
-[2024-12-11 19:06:16] 
-Ticket Pool reached maximum capacity.
-[2024-12-11 19:06:17] Customer 2 purchased ticket : 19
-[2024-12-11 19:06:17] Vendor 1 added ticket : 69
-[2024-12-11 19:06:17] 
-Ticket Pool reached maximum capacity.
-[2024-12-11 19:06:17] Customer 1 purchased ticket : 20
-[2024-12-11 19:06:17] Vendor 1 added ticket : 70
-[2024-12-11 19:06:17] 
-Ticket Pool reached maximum capacity.
-[2024-12-11 19:06:17] Customer 2 purchased ticket : 21
-[2024-12-11 19:06:17] Vendor 1 added ticket : 71
-[2024-12-11 19:06:17] 
-Ticket Pool reached maximum capacity.
-[2024-12-11 19:06:17] Customer 1 purchased ticket : 22
-[2024-12-11 19:06:17] Vendor 1 added ticket : 72
-[2024-12-11 19:06:17] 
-Ticket Pool reached maximum capacity.
-[2024-12-11 19:06:18] Customer 2 purchased ticket : 23
-[2024-12-11 19:06:18] Vendor 1 added ticket : 73
-[2024-12-11 19:06:18] 
-Ticket Pool reached maximum capacity.
-[2024-12-11 19:06:18] Customer 1 purchased ticket : 24
-[2024-12-11 19:06:18] Vendor 1 added ticket : 74
-[2024-12-11 19:06:18] 
-Ticket Pool reached maximum capacity.
-[2024-12-11 19:06:19] Customer 2 purchased ticket : 25
-[2024-12-11 19:06:19] Vendor 1 added ticket : 75
-[2024-12-11 19:06:19] 
-Ticket Pool reached maximum capacity.
-[2024-12-11 19:06:19] Customer 1 purchased ticket : 26
-[2024-12-11 19:06:19] Vendor 1 added ticket : 76
-[2024-12-11 19:06:20] Customer 2 purchased ticket : 27
-[2024-12-11 19:06:20] Customer 1 purchased ticket : 28
-[2024-12-11 19:06:20] Vendor 1 added ticket : 77
-[2024-12-11 19:06:20] Vendor 1 added ticket : 78
-[2024-12-11 19:06:20] 
-Ticket Pool reached maximum capacity.
-[2024-12-11 19:06:21] Customer 2 purchased ticket : 29
-[2024-12-11 19:06:21] Vendor 1 added ticket : 79
-[2024-12-11 19:06:21] 
-Ticket Pool reached maximum capacity.
-[2024-12-11 19:06:21] Customer 1 purchased ticket : 30
-[2024-12-11 19:06:21] Vendor 1 added ticket : 80
-[2024-12-11 19:06:21] 
-Ticket Pool reached maximum capacity.
-[2024-12-11 19:06:22] Customer 2 purchased ticket : 31
-[2024-12-11 19:06:22] Vendor 1 added ticket : 81
-[2024-12-11 19:06:22] 
-Ticket Pool reached maximum capacity.
-[2024-12-11 19:06:22] Customer 1 purchased ticket : 32
-[2024-12-11 19:06:22] Vendor 1 added ticket : 82
-[2024-12-11 19:06:22] 
-Ticket Pool reached maximum capacity.
-[2024-12-11 19:06:23] Customer 2 purchased ticket : 33
-[2024-12-11 19:06:23] Vendor 1 added ticket : 83
-[2024-12-11 19:06:23] 
-Ticket Pool reached maximum capacity.
-[2024-12-11 19:06:23] Customer 1 purchased ticket : 34
-[2024-12-11 19:06:23] Vendor 1 added ticket : 84
-[2024-12-11 19:06:23] 
-Ticket Pool reached maximum capacity.
-[2024-12-11 19:06:24] Customer 2 purchased ticket : 35
-[2024-12-11 19:06:24] Vendor 1 added ticket : 85
-[2024-12-11 19:06:24] 
-Ticket Pool reached maximum capacity.
-[2024-12-11 19:06:24] Customer 1 purchased ticket : 36
-[2024-12-11 19:06:24] Vendor 1 added ticket : 86
-[2024-12-11 19:06:24] 
-Ticket Pool reached maximum capacity.
-[2024-12-11 19:06:25] Customer 2 purchased ticket : 37
-[2024-12-11 19:06:25] Vendor 1 added ticket : 87
-[2024-12-11 19:06:25] 
-Ticket Pool reached maximum capacity.
-[2024-12-11 19:06:25] Customer 1 purchased ticket : 38
-[2024-12-11 19:06:25] Vendor 1 added ticket : 88
-[2024-12-11 19:06:26] Customer 2 purchased ticket : 39
-[2024-12-11 19:06:26] Customer 1 purchased ticket : 40
-[2024-12-11 19:06:26] Vendor 1 added ticket : 89
-[2024-12-11 19:06:26] Vendor 1 added ticket : 90
-[2024-12-11 19:06:26] 
-Ticket Pool reached maximum capacity.
-[2024-12-11 19:06:27] Customer 2 purchased ticket : 41
-[2024-12-11 19:06:27] Vendor 1 added ticket : 91
-[2024-12-11 19:06:27] 
-Ticket Pool reached maximum capacity.
-[2024-12-11 19:06:27] Customer 1 purchased ticket : 42
-[2024-12-11 19:06:27] Vendor 1 added ticket : 92
-[2024-12-11 19:06:27] 
-Ticket Pool reached maximum capacity.
-[2024-12-11 19:06:27] Customer 2 purchased ticket : 43
-[2024-12-11 19:06:27] Vendor 1 added ticket : 93
-[2024-12-11 19:06:27] 
-Ticket Pool reached maximum capacity.
-[2024-12-11 19:06:27] Customer 1 purchased ticket : 44
-[2024-12-11 19:06:27] Vendor 1 added ticket : 94
-[2024-12-11 19:06:27] 
-Ticket Pool reached maximum capacity.
-[2024-12-11 19:06:28] Customer 2 purchased ticket : 45
-[2024-12-11 19:06:28] Vendor 1 added ticket : 95
-[2024-12-11 19:06:28] 
-Ticket Pool reached maximum capacity.
-[2024-12-11 19:06:28] Customer 1 purchased ticket : 46
-[2024-12-11 19:06:28] Vendor 1 added ticket : 96
-[2024-12-11 19:06:28] 
-Ticket Pool reached maximum capacity.
-[2024-12-11 19:06:29] Customer 2 purchased ticket : 47
-[2024-12-11 19:06:29] Vendor 1 added ticket : 97
-[2024-12-11 19:06:29] 
-Ticket Pool reached maximum capacity.
-[2024-12-11 19:06:29] Customer 1 purchased ticket : 48
-[2024-12-11 19:06:29] Vendor 1 added ticket : 98
-[2024-12-11 19:06:29] 
-Ticket Pool reached maximum capacity.
-[2024-12-11 19:06:30] Customer 2 purchased ticket : 49
-[2024-12-11 19:06:30] Vendor 1 added ticket : 99
-[2024-12-11 19:06:30] 
-Ticket Pool reached maximum capacity.
-[2024-12-11 19:06:30] Customer 1 purchased ticket : 50
-[2024-12-11 19:06:30] Vendor 1 added ticket : 100
-[2024-12-11 19:06:30] Vendor 1 has stopped issuing tickets.
-[2024-12-11 19:06:31] Customer 2 purchased ticket : 51
-[2024-12-11 19:06:31] Customer 1 purchased ticket : 52
-[2024-12-11 19:06:32] Customer 2 purchased ticket : 53
-[2024-12-11 19:06:32] Customer 1 purchased ticket : 54
-[2024-12-11 19:06:33] Customer 2 purchased ticket : 55
-[2024-12-11 19:06:33] Customer 1 purchased ticket : 56
-[2024-12-11 19:06:34] Customer 2 purchased ticket : 57
-[2024-12-11 19:06:34] Customer 1 purchased ticket : 58
-[2024-12-11 19:06:35] Customer 2 purchased ticket : 59
-[2024-12-11 19:06:35] Customer 1 purchased ticket : 60
-[2024-12-11 19:06:36] Customer 2 has stopped purchasing as no more tickets are available or max reached.
-[2024-12-11 19:06:36] Customer 1 purchased ticket : 61
-[2024-12-11 19:06:37] Customer 1 purchased ticket : 62
-[2024-12-11 19:06:37] Customer 1 purchased ticket : 63
-[2024-12-11 19:06:38] Customer 1 purchased ticket : 64
-[2024-12-11 19:06:39] Customer 1 purchased ticket : 65
-[2024-12-11 19:06:40] Customer 1 purchased ticket : 66
-[2024-12-11 19:06:41] Customer 1 purchased ticket : 67
-[2024-12-11 19:06:42] Customer 1 purchased ticket : 68
-[2024-12-11 19:06:43] Customer 1 purchased ticket : 69
-[2024-12-11 19:06:44] Customer 1 purchased ticket : 70
-[2024-12-11 19:06:45] Customer 1 has stopped purchasing as no more tickets are available or max reached.
+[2024-12-12 10:37:54] Customer 1 purchased ticket : 10
+[2024-12-12 10:37:54] Vendor 2 added ticket : 20
+[2024-12-12 10:37:54] Vendor 2 has stopped issuing tickets.
+[2024-12-12 10:37:54] Customer 1 purchased ticket : 11
+[2024-12-12 10:37:54] Customer 1 purchased ticket : 12
+[2024-12-12 10:37:54] Customer 1 has stopped purchasing as no more tickets are available or max reached.
+[2024-12-12 10:41:51] Customer created with 2 tickets
+[2024-12-12 10:42:29] Customer created with 0 tickets
+[2024-12-12 10:44:27] Customer created with 2 tickets
+[2024-12-12 10:44:33] Customer 2 run
+[2024-12-12 10:44:33] Customer 2 purchased ticket : 13
+[2024-12-12 10:44:33] Customer 2 purchased ticket : 14
+[2024-12-12 10:44:33] Customer 2 has stopped purchasing as no more tickets are available or max reached.
+[2024-12-12 10:44:34] Customer 3 run
+[2024-12-12 10:44:34] Customer 3 has stopped purchasing as no more tickets are available or max reached.
+[2024-12-12 10:44:35] Customer 4 run
+[2024-12-12 10:44:35] Customer 4 purchased ticket : 15
+[2024-12-12 10:44:35] Customer 4 purchased ticket : 16
+[2024-12-12 10:44:35] Customer 4 has stopped purchasing as no more tickets are available or max reached.
+[2024-12-12 10:50:35] Customer created with 4 tickets
+[2024-12-12 10:50:37] Customer 5 run
+[2024-12-12 10:50:37] Customer 5 purchased ticket : 17
+[2024-12-12 10:50:38] Customer 5 purchased ticket : 18
+[2024-12-12 10:50:38] Customer 5 purchased ticket : 19
+[2024-12-12 10:50:38] Customer 5 purchased ticket : 20
+[2024-12-12 10:50:38] Customer 5 has stopped purchasing as no more tickets are available or max reached.

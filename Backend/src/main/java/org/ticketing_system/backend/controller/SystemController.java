@@ -10,8 +10,10 @@ import org.springframework.web.bind.annotation.RestController;
 import org.ticketing_system.backend.model.Customer;
 import org.ticketing_system.backend.model.Vendor;
 import org.ticketing_system.backend.service.CustomerService;
+import org.ticketing_system.backend.service.LoggingService;
 import org.ticketing_system.backend.service.VendorService;
 
+import java.util.Locale;
 import java.util.Map;
 
 @RestController
@@ -24,6 +26,9 @@ public class SystemController {
 
     @Autowired
     private CustomerService customerService;
+
+    @Autowired
+    private LoggingService loggingService;
 
     @PostMapping("/runAll")
     public String runAllCustomers() {
@@ -39,6 +44,7 @@ public class SystemController {
             customerService.runCustomer(customerId);  // This will start a thread for each customer
         }
 
+        loggingService.log("All customers and Vendors are now running in separate threads.");
         return "All customers and Vendors are now running in separate threads.";
     }
 
@@ -46,6 +52,7 @@ public class SystemController {
     public ResponseEntity<Void> stopAll(){
         customerService.stopCustomer();
         vendorService.stopVendor();
+        loggingService.log("All customers and Vendors are now stopped.");
         return ResponseEntity.ok().build();
     }
 

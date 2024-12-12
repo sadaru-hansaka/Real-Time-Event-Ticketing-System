@@ -47,7 +47,9 @@ public class CustomerService{
             int totalTickets = configuration.getTotalTickets();
 
             if(ticketCount > totalTickets){
-                throw new IllegalArgumentException("Number of tickets must be less than total tickets");
+                String error1 = "Number of tickets must be less than total tickets";
+                loggingService.log(error1);
+                throw new IllegalArgumentException(error1);
             }
 
             Customer customer = new Customer(customer_id,retrievalRate,ticketCount);
@@ -64,7 +66,9 @@ public class CustomerService{
     public void runCustomer(int customerID) {
         Customer customer= customers.get(customerID);
         if(customer == null){
-            System.out.println("Customer not found");
+            String out = "Customer "+customerID+" not found";
+            System.out.println(out);
+            loggingService.log(out);
             return;
         }
         Thread customerThread = new Thread(new CustomerMultithreading(customer, ticketPoolService,loggingService, customerID,this));

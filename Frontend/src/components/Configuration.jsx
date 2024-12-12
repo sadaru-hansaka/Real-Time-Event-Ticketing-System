@@ -51,7 +51,7 @@ const Configuration = () =>{
         <div className="w-[400px] m-2 p-4 border-2 border-black px-5 py-2 rounded-lg bg-slate-300">
           <h1 className="text-2xl mb-[20px]">Inputh configuration parameters : </h1>
             <form className="flex flex-col" onSubmit={handleSubmit}>
-              <label className="mb-[10px]">Number of Tickets  :</label>
+              <label className="mb-[10px]">Number of Total Tickets  :</label>
               <input type="number" min={0}  name="totalTickets" value={formData.totalTickets || ""} onChange={handleChanges}/>
                       
               <label  className="mb-[10px]">Maximum capacity of the system :</label>

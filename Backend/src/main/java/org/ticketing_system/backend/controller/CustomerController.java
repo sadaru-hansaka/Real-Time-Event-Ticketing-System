@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.*;
 import org.ticketing_system.backend.model.Customer;
 import org.ticketing_system.backend.model.Vendor;
 import org.ticketing_system.backend.service.CustomerService;
+import org.ticketing_system.backend.service.LoggingService;
 
 import java.util.List;
 import java.util.Map;
@@ -18,9 +19,13 @@ public class CustomerController {
     @Autowired
     private CustomerService customerService;
 
+    @Autowired
+    private LoggingService loggingService;
+
     @PostMapping("/create")
     public Customer createCustomer(@RequestBody Map<String,Integer> customerData) {
         int ticketCount = customerData.get("ticketCount");
+        loggingService.log("Customer created with "+ticketCount+" tickets");
         return customerService.createCustomer(ticketCount);
     }
 
@@ -48,6 +53,7 @@ public class CustomerController {
         for (Integer customerId : customers.keySet()) {
             customerService.runCustomer(customerId);  // This will start a thread for each customer
         }
+        loggingService.log("Customer started");
         return "Customers started.";
     }
 
@@ -63,6 +69,7 @@ public class CustomerController {
         Customer customer = customerService.getCustomers().get(customer_id);
 
         customerService.runCustomer(customer_id);
+        loggingService.log("Customer "+customer_id+" run");
         return ResponseEntity.ok("Customer " + customer_id);
     }
 
